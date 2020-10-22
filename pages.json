@@ -1,0 +1,53 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/tabBar/main/main",
+			"style": {
+			}
+		}
+	    ,{
+            "path" : "pages/tabBar/works/works",
+            "style" : {}
+        }
+        
+        
+    ],
+	"subPackages":[
+		{
+			"root":"pages/main",
+			"pages":[
+				{
+				    "path" : "make-poster/make-poster",
+				    "style" : {}
+				},{
+					"path" : "test/test",
+					"style" : {}
+				}
+			]
+		},
+		{
+			"root":"pages/works",
+			"pages":[
+				
+			]
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "POSTER",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar":{
+		"list":[
+			{
+				"text":"模板",
+				"pagePath":"pages/tabBar/main/main"
+			},
+			{
+				"text":"我的作品",
+				"pagePath":"pages/tabBar/works/works"
+			}
+		]
+	}
+}

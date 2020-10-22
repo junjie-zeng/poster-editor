@@ -1,0 +1,266 @@
+.make-poster {
+  position: relative;
+  min-height: 200rpx;
+}
+.make-poster .poster > image {
+  vertical-align: bottom;
+  width: 100%;
+}
+.make-poster .drag movable-area {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+.make-poster .drag movable-area movable-view {
+  position: absolute;
+  height: auto;
+  width: auto;
+}
+.make-poster .drag movable-area .text {
+  height: auto;
+  width: auto;
+}
+.make-poster .drag movable-area .img > image {
+  width: 100%;
+  height: 100%;
+}
+.make-poster .add-poster {
+  position: fixed;
+  left: 50%;
+  top: 40%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  height: 200rpx;
+  width: 200rpx;
+  background: pink;
+  text-align: center;
+  line-height: 200rpx;
+  font-size: 60rpx;
+  color: #C0C0C0;
+}
+.make-poster .drawer .content {
+  background: #333435;
+  height: 100%;
+  color: #aaabac;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.make-poster .drawer .content .th {
+  height: 80rpx;
+  width: 100%;
+  background: #1274e7;
+  color: #fff;
+  font-size: 26rpx;
+  text-align: center;
+  line-height: 80rpx;
+}
+.make-poster .drawer .content .th .close {
+  display: inline-block;
+  float: right;
+  margin-right: 20rpx;
+  font-size: 32rpx;
+}
+.make-poster .drawer .content .td {
+  padding: 10rpx 10rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.make-poster .drawer .content .td .item {
+  -webkit-box-flex: 40%;
+  -webkit-flex: 40%;
+          flex: 40%;
+  height: 100px;
+  text-align: center;
+  margin: 10rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 10rpx;
+  background: #444546;
+  font-size: 28rpx;
+}
+.make-poster .drawer .content .td .item .icon {
+  -webkit-box-flex: 2;
+  -webkit-flex: 2;
+          flex: 2;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+          align-items: flex-end;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  font-size: 88rpx;
+}
+.make-poster .drawer .content .td .item .text {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.make-poster .drawer .content .setting .row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  min-height: 90rpx;
+  line-height: 90rpx;
+  font-size: 28rpx;
+  width: 100%;
+}
+.make-poster .drawer .content .setting .row .tip {
+  width: 35px;
+}
+.make-poster .drawer .content .setting .row .opertion {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  padding-left: 10rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.make-poster .drawer .content .setting .row .opertion .slider {
+  position: relative;
+  width: 100%;
+}
+.make-poster .drawer .content .setting .row .opertion .slider uni-slider,
+.make-poster .drawer .content .setting .row .opertion .slider slider {
+  margin: 0 10rpx;
+  padding-right: 40rpx;
+}
+.make-poster .drawer .content .setting .row .opertion .slider > text {
+  position: absolute;
+  top: 0;
+  right: 2px;
+}
+.make-poster .drawer .content .setting .row .opertion .picker {
+  width: 100%;
+  height: 65rpx;
+  line-height: 65rpx;
+  text-align: center;
+  background: #292929;
+  border-radius: 5px;
+}
+.make-poster .drawer .content .setting .row .opertion .color-set {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.make-poster .drawer .content .setting .row .opertion .color-set > .color {
+  width: 35rpx;
+  height: 35rpx;
+  margin-right: 5rpx;
+}
+.make-poster .drawer .content .setting .row .opertion .sidebar {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  height: 65rpx;
+  line-height: 65rpx;
+  border-radius: 5px;
+}
+.make-poster .drawer .content .setting .row .opertion .sidebar > view {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  text-align: center;
+  background: #555657;
+}
+.make-poster .drawer .content .setting .row .opertion .sidebar > view:nth-child(2) {
+  border-left: solid 1px #454545;
+  border-right: solid 1px #454545;
+}
+.make-poster .drawer .content .setting .row .opertion .sidebar > .active {
+  background: #1274e7;
+  color: #fff;
+}
+.make-poster .drawer .content .setting .row .opertion .textarea {
+  width: 100%;
+}
+.make-poster .drawer .content .setting .row .opertion .textarea > textarea {
+  width: 100%;
+  height: 80rpx;
+  background: #444546;
+  padding: 10rpx;
+}
+.make-poster .drawer .content .setting .row .btn-wrap {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.make-poster .drawer .content .setting .row .btn-wrap > view {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  height: 65rpx;
+  line-height: 65rpx;
+  text-align: center;
+  color: #fff;
+  border-radius: 5rpx;
+}
+.make-poster .drawer .content .setting .row .btn-wrap .btn-ok {
+  background: #00c853;
+  margin-right: 5rpx;
+}
+.make-poster .drawer .content .setting .row .btn-wrap .btn-cancel {
+  background: #555657;
+  margin-left: 5rpx;
+}
+.make-poster .add-content {
+  position: fixed;
+  top: 70%;
+  right: 5%;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: #007AFF;
+  text-align: center;
+  line-height: 88rpx;
+  font-size: 88rpx;
+  color: #FFFFFF;
+}
+.make-poster .hide-canvas {
+  position: fixed;
+  top: -99999rpx;
+  left: -99999rpx;
+  z-index: -99999;
+}
+

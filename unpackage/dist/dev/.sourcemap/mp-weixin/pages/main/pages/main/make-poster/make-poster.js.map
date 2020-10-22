@@ -1,0 +1,1 @@
+{"version":3,"sources":["uni-app:///main.js"],"names":["createPage","Page"],"mappings":";;;;;;;;;;kDAAA;AACA;AACA,6O;AACAA,UAAU,CAACC,mBAAD,CAAV,C","file":"pages/main/pages/main/make-poster/make-poster.js","sourcesContent":["import 'uni-pages';\nimport Vue from 'vue'\nimport Page from './pages/main/pages/main/make-poster/make-poster.vue'\ncreatePage(Page)"],"sourceRoot":""}

@@ -1,0 +1,34 @@
+{
+  "pages": [
+    "pages/tabBar/main/main",
+    "pages/tabBar/works/works"
+  ],
+  "subPackages": [
+    {
+      "root": "pages/main",
+      "pages": [
+        "make-poster/make-poster",
+        "test/test"
+      ]
+    }
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "POSTER",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "text": "模板",
+        "pagePath": "pages/tabBar/main/main"
+      },
+      {
+        "text": "我的作品",
+        "pagePath": "pages/tabBar/works/works"
+      }
+    ]
+  },
+  "usingComponents": {}
+}
