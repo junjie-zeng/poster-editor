@@ -104,11 +104,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"components/uni-drawer/uni-drawer":1};
+/******/ 		var cssChunks = {"components/uni-popup/uni-popup":1,"components/uni-drawer/uni-drawer":1,"components/uni-popup/uni-popup-dialog":1,"components/uni-popup/uni-popup-message":1,"components/uni-transition/uni-transition":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"components/uni-drawer/uni-drawer":"components/uni-drawer/uni-drawer"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"components/uni-popup/uni-popup":"components/uni-popup/uni-popup","components/uni-drawer/uni-drawer":"components/uni-drawer/uni-drawer","components/uni-popup/uni-popup-dialog":"components/uni-popup/uni-popup-dialog","components/uni-popup/uni-popup-message":"components/uni-popup/uni-popup-message","components/uni-transition/uni-transition":"components/uni-transition/uni-transition"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {

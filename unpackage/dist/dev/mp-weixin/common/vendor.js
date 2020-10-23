@@ -7803,65 +7803,18 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 4:
-/*!************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/pages.json ***!
-  \************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-
-/***/ 53:
-/*!***********************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/static/lib/js/data.js ***!
-  \***********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
-
-
-var pageInfo = {
-  id: 0,
-  detail: { background: 'white', backgroundImage: '../../../static/image/5.jpg', x: 0, y: 0, width: 100, height: 100 },
-  content: [
-
-  {
-    id: 2,
-    type: 'img',
-    detail: { x: 0, y: 0, cx: 228, cy: 50, width: 100, height: 100, url: '../../../static/image/nike.jpg', borderRadius: 10 }
-    // borderRadius最大值50
-  },
-  {
-    id: 0,
-    type: 'text',
-    detail: { x: 0, y: 0, cx: 100, cy: 95, fontSize: 20, content: 'Nike', color: 'black' } }
-
-
-  // 后期类型：列表、图标
-  ] };var _default =
-
-
-pageInfo;exports.default = _default;
-
-/***/ }),
-
-/***/ 54:
+/***/ 31:
 /*!*********************************************************************************************!*\
   !*** ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator/index.js ***!
   \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 55);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 32);
 
 /***/ }),
 
-/***/ 55:
+/***/ 32:
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -7892,7 +7845,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 56);
+module.exports = __webpack_require__(/*! ./runtime */ 33);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -7909,7 +7862,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 56:
+/***/ 33:
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -8638,6 +8591,119 @@ if (hadRuntime) {
   })() || Function("return this")()
 );
 
+
+/***/ }),
+
+/***/ 34:
+/*!***********************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/static/lib/js/data.js ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+var pageInfo = {
+  id: 0,
+  detail: { background: 'white', backgroundImage: '../../../static/image/5.jpg', x: 0, y: 0, width: 100, height: 100 },
+  content: [
+
+  {
+    id: 2,
+    type: 'img',
+    detail: { x: 0, y: 0, cx: 228, cy: 50, width: 100, height: 100, url: '../../../static/image/nike.jpg', borderRadius: 10 }
+    // borderRadius最大值50
+  },
+  {
+    id: 0,
+    type: 'text',
+    detail: { x: 0, y: 0, cx: 100, cy: 95, fontSize: 20, content: 'Nike', color: 'black' } }
+
+
+  // 后期类型：列表、图标
+  ] };var _default =
+
+
+pageInfo;exports.default = _default;
+
+/***/ }),
+
+/***/ 4:
+/*!************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/pages.json ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ 62:
+/*!*******************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/components/uni-popup/popup.js ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 63));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+// 定义 type 类型:弹出类型：top/bottom/center
+var config = {
+  // 顶部弹出
+  top: 'top',
+  // 底部弹出
+  bottom: 'bottom',
+  // 居中弹出
+  center: 'center',
+  // 消息提示
+  message: 'top',
+  // 对话框
+  dialog: 'center',
+  // 分享
+  share: 'bottom' };var _default =
+
+
+{
+  data: function data() {
+    return {
+      config: config };
+
+  },
+  mixins: [_message.default] };exports.default = _default;
+
+/***/ }),
+
+/***/ 63:
+/*!*********************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/components/uni-popup/message.js ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  created: function created() {
+    if (this.type === 'message') {
+      // 不显示遮罩
+      this.maskShow = false;
+      // 获取子组件对象
+      this.childrenMsg = null;
+    }
+  },
+  methods: {
+    customOpen: function customOpen() {
+      if (this.childrenMsg) {
+        this.childrenMsg.open();
+      }
+    },
+    customClose: function customClose() {
+      if (this.childrenMsg) {
+        this.childrenMsg.close();
+      }
+    } } };exports.default = _default;
 
 /***/ })
 

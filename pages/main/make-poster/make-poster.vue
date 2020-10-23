@@ -10,6 +10,9 @@
 		<view class="add-content" @click="showDrawer('showLeft')">
 			+
 		</view>
+		<view class="ok" @click="openPopup">
+			完成
+		</view>
 		<view class="drag">
 			<movable-area>
 
@@ -183,18 +186,58 @@
 				</uni-drawer>
 			</view>
 		</view>
-		
+		<uni-popup ref="popup" type="center">
+			<view class="popup-wrap">
+				<view class="show-poster">
+					
+				</view>
+				<view class="save-poster">
+					<view class="save-tips">
+						长按图片保存到本地
+					</view>
+					<view class="save-btn">
+						<!-- #ifdef MP-WEIXIN -->
+						<button type="default">保存到本地</button>
+						<!-- #endif -->
+						<button type="default" @click="closePopup">取消</button>
+					</view>
+				</view>
+			</view>
+		</uni-popup>
+		<!-- <uni-popup ref="popup" type="center">
+			<view class="picture-library">
+				<view class="pic-libary-title">
+					图片库
+				</view>
+				<view class="pic-libary-list">
+					<scroll-view scroll-y="true">
+						<view class="image-item">
+							<image src="../../../static/image/5.jpg" mode=""></image>
+						</view>
+						<view class="image-item">
+							<image src="../../../static/image/5.jpg" mode=""></image>
+						</view>
+						<view class="image-item">
+							<image src="../../../static/image/5.jpg" mode=""></image>
+						</view>
+					</scroll-view>
+				</view>
+			</view>
+		</uni-popup> -->
 	</view>
 </template>
 
 <script>
 	import uniDrawer from "@/components/uni-drawer/uni-drawer.vue"
 	import pageInfo from '@/static/lib/js/data.js'
+	import uniPopup from '@/components/uni-popup/uni-popup.vue'
+	import uniPopupMessage from '@/components/uni-popup/uni-popup-message.vue'
+	import uniPopupDialog from '@/components/uni-popup/uni-popup-dialog.vue'
 	export default {
 		data() {
 			return {
-				showRight: false,
-				showLeft: false,
+				// showRight: false,
+				// showLeft: false,
 				pageInfo:pageInfo,
 				poster:{},
 				array: ['中国', '美国', '巴西', '日本'],
@@ -209,6 +252,12 @@
 			
 		},
 		methods: {
+			openPopup(){
+				this.$refs.popup.open()
+			},
+			closePopup(){
+				this.$refs.popup.close()
+			},
 			confirm() {},
 			// 打开窗口
 			showDrawer(e) {
@@ -315,15 +364,18 @@
 			}
 		},
 		// app端拦截返回事件 ，仅app端生效
-		onBackPress() {
-			if (this.showRight || this.showLeft) {
-				this.$refs.showLeft.close()
-				this.$refs.showRight.close()
-				return true
-			}
-		},
+		// onBackPress() {
+		// 	if (this.showRight || this.showLeft) {
+		// 		this.$refs.showLeft.close()
+		// 		this.$refs.showRight.close()
+		// 		return true
+		// 	}
+		// },
 		components: {
-			uniDrawer
+			uniDrawer,
+			uniPopup,
+			uniPopupMessage,
+			uniPopupDialog
 		}
 	}
 </script>
@@ -338,6 +390,99 @@
 		position: relative;
 		// border: solid 1px #55aaff;
 		min-height: 200rpx;
+		
+		// .picture-library{
+		// 	position: fixed;
+		// 	bottom: 10px;
+		// 	left: 10px;
+		// 	top: 55px;
+		// 	right: 10px;
+		// 	background: #fff;
+		// 	display: flex;
+		// 	flex-direction: column;
+		// 	.pic-libary-title{
+		// 		height: 100rpx;
+		// 		background: #222324;
+		// 		color: #fff;
+		// 		line-height: 100rpx;
+		// 		padding-left: 20rpx;
+		// 	}
+			
+		// 	.pic-libary-list{
+		// 		flex: 1;
+			
+		// 		scroll-view{
+		// 			padding: 10rpx;
+		// 			width: 100%;
+		// 				text-align: center;
+		// 			.image-item{
+		// 				display: inline;
+		// 				border: solid 1px red;
+		// 				width: 48%;
+		// 				float: left;
+		// 				// margin: 5rpx;
+		// 				&>image{
+		// 					width: 100%;
+		// 				}
+		// 			}
+		// 		}
+				
+		// 	}
+			
+		// }
+		.popup-wrap{
+			position: fixed;
+			bottom: 10px;
+			left: 10px;
+			top: 55px;
+			right: 10px;
+			background: #fff;
+			display: flex;
+			flex-direction: column;
+			.show-poster{
+				flex: 1;
+				background: pink;
+			}
+			
+			.save-poster{
+				padding: 10rpx 20rpx;
+				height: 300rpx;
+				text-align: center;
+				
+				.save-tips{
+					font-size: 32rpx;
+					color: #aaa1a1;
+				}
+				.save-btn{
+					&>button{
+						margin-top:20rpx;
+						outline: none;
+						color: #fff;
+						font-size: 32rpx;
+					}
+					button:nth-child(1){
+						background: #007aff;
+					}
+					button:nth-child(2){
+						border: solid 1px #007aff;
+						color: #007aff;
+					}
+				}
+				
+			}
+			
+			// #ifdef H5
+				.save-poster{
+					height: 170rpx;
+				}
+			// #endif
+		}
+		
+		// #ifdef MP-WEIXIN
+		.popup-wrap{
+			top: 10px;
+		}
+		// #endif
 
 		.poster {
 			&>image {
@@ -391,6 +536,20 @@
 			line-height: 200rpx;
 			font-size: 60rpx;
 			color: #C0C0C0;
+		}
+		
+		.ok{
+			position: fixed;
+			bottom: 60rpx;
+			right: 5%;
+			width: 100rpx;
+			height: 50rpx;
+			background: #007AFF;
+			border-radius: 10rpx;
+			text-align: center;
+			line-height: 50rpx;
+			font-size: 22rpx;
+			color: #fff;
 		}
 
 
@@ -490,7 +649,7 @@
 								line-height: 65rpx;
 								text-align: center;
 								background: #292929;
-								border-radius: 5px;
+								border-radius: 3px;
 								
 							}
 							.color-set{
@@ -508,7 +667,8 @@
 								width: 100%;
 								height: 65rpx;
 								line-height: 65rpx;
-								border-radius: 5px;
+								border-radius: 3px;
+								overflow: hidden;
 								&>view{
 									flex: 1;
 									text-align: center;
@@ -526,11 +686,15 @@
 							
 							.textarea{
 								width: 100%;
+								overflow: hidden;
+								border-radius: 3px;
+								margin-top: 10rpx;
 								&>textarea{
 									width: 100%;
 									height: 80rpx;
 									background: #444546;
 									padding: 10rpx;
+									
 								}
 							}
 								
@@ -542,6 +706,7 @@
 							display: flex;
 							width: 100%;
 							align-items: center;
+							margin-top: 20rpx;
 							&>view{
 								flex: 1;
 								height: 65rpx;
@@ -569,8 +734,8 @@
 
 		.add-content {
 			position: fixed;
-			top: 70%;
-			right: 5%;
+			bottom: 60rpx;
+			left: 5%;
 			width: 100rpx;
 			height: 100rpx;
 			border-radius: 50%;

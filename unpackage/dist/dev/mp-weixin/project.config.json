@@ -10,20 +10,11 @@
 		"preloadBackgroundData": false,
 		"minified": true,
 		"newFeature": true,
-		"coverView": true,
 		"autoAudits": false,
+		"coverView": true,
 		"showShadowRootInWxmlPanel": true,
 		"scopeDataCheck": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		},
-		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": false
+		"useCompilerModule": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "",
@@ -59,13 +50,6 @@
 					"id": -1,
 					"name": "pages/main/make-poster/make-poster",
 					"pathName": "pages/main/make-poster/make-poster",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/main/test/test",
-					"pathName": "pages/main/test/test",
 					"scene": null
 				}
 			]

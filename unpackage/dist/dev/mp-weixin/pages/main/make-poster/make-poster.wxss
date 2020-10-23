@@ -2,6 +2,52 @@
   position: relative;
   min-height: 200rpx;
 }
+.make-poster .popup-wrap {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  top: 55px;
+  right: 10px;
+  background: #fff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+.make-poster .popup-wrap .show-poster {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  background: pink;
+}
+.make-poster .popup-wrap .save-poster {
+  padding: 10rpx 20rpx;
+  height: 300rpx;
+  text-align: center;
+}
+.make-poster .popup-wrap .save-poster .save-tips {
+  font-size: 32rpx;
+  color: #aaa1a1;
+}
+.make-poster .popup-wrap .save-poster .save-btn > button {
+  margin-top: 20rpx;
+  outline: none;
+  color: #fff;
+  font-size: 32rpx;
+}
+.make-poster .popup-wrap .save-poster .save-btn button:nth-child(1) {
+  background: #007aff;
+}
+.make-poster .popup-wrap .save-poster .save-btn button:nth-child(2) {
+  border: solid 1px #007aff;
+  color: #007aff;
+}
+.make-poster .popup-wrap {
+  top: 10px;
+}
 .make-poster .poster > image {
   vertical-align: bottom;
   width: 100%;
@@ -39,6 +85,19 @@
   line-height: 200rpx;
   font-size: 60rpx;
   color: #C0C0C0;
+}
+.make-poster .ok {
+  position: fixed;
+  bottom: 60rpx;
+  right: 5%;
+  width: 100rpx;
+  height: 50rpx;
+  background: #007AFF;
+  border-radius: 10rpx;
+  text-align: center;
+  line-height: 50rpx;
+  font-size: 22rpx;
+  color: #fff;
 }
 .make-poster .drawer .content {
   background: #333435;
@@ -169,7 +228,7 @@
   line-height: 65rpx;
   text-align: center;
   background: #292929;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 .make-poster .drawer .content .setting .row .opertion .color-set {
   display: -webkit-box;
@@ -191,7 +250,8 @@
   width: 100%;
   height: 65rpx;
   line-height: 65rpx;
-  border-radius: 5px;
+  border-radius: 3px;
+  overflow: hidden;
 }
 .make-poster .drawer .content .setting .row .opertion .sidebar > view {
   -webkit-box-flex: 1;
@@ -210,6 +270,9 @@
 }
 .make-poster .drawer .content .setting .row .opertion .textarea {
   width: 100%;
+  overflow: hidden;
+  border-radius: 3px;
+  margin-top: 10rpx;
 }
 .make-poster .drawer .content .setting .row .opertion .textarea > textarea {
   width: 100%;
@@ -225,6 +288,7 @@
   -webkit-box-align: center;
   -webkit-align-items: center;
           align-items: center;
+  margin-top: 20rpx;
 }
 .make-poster .drawer .content .setting .row .btn-wrap > view {
   -webkit-box-flex: 1;
@@ -246,8 +310,8 @@
 }
 .make-poster .add-content {
   position: fixed;
-  top: 70%;
-  right: 5%;
+  bottom: 60rpx;
+  left: 5%;
   width: 100rpx;
   height: 100rpx;
   border-radius: 50%;
