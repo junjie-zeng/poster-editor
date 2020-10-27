@@ -1,0 +1,1 @@
+<view class="color-set"><block wx:for="{{colors}}" wx:for-item="c" wx:for-index="i" wx:key="i"><view data-event-opts="{{[['tap',[['setColor',['$0'],[[['colors','',i]]]]]]]}}" class="color" style="{{'background:'+(c)+';'}}" bindtap="__e"></view></block></view>

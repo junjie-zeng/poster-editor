@@ -4,30 +4,15 @@
 			<image id = "bgImage" :src="pageInfo.detail.backgroundImage"  mode="widthFix"></image>
 			<!-- <image id = "bgImage" src="../../../static/image/6.png" mode="widthFix"></image> -->
 		</view>
-		<!-- <view class="add-poster" @click="addPoster">
-			+
-		</view> -->
-		<view class="add-content" @click="showDrawer('showLeft')">
+		<view class="page-set" @click="setting" >
+			<view class=""></view>
 			+
 		</view>
-		<view class="ok" @click="openPopup">
+		<view class="ok" @click="openPopup('create-img-popup')">
 			完成
 		</view>
 		<view class="drag">
 			<movable-area>
-
-				<!-- <movable-view class="target" direction="all">
-					<view class="text" @click="showDrawer('showRight')">
-						Nike
-					</view>
-				</movable-view>
-
-				<movable-view class="target " direction="all">
-					<view class="img" style="width:100rpx;height:100rpx;" @click="showDrawer('showRight')">
-						<image src="../../../static/image/nike.jpg"></image>
-					</view>
-				</movable-view> -->
-				
 				<movable-view
 					class="target" 
 					direction="all" 
@@ -35,7 +20,7 @@
 					:key = "index"
 					:x="item.detail.x" 
 					:y="item.detail.y" 
-					@click="showDrawer('showRight')" 
+					@click="editContent(item)" 
 					@change="updateRect($event,item)">
 					<!-- text -->
 					<view class="text" 
@@ -52,7 +37,6 @@
 						<image v-if="item.type == 'img'" :src="item.detail.url" ></image>
 					</view>
 				</movable-view>
-
 			</movable-area>
 		</view>
 		<view class="drawer">
@@ -97,26 +81,16 @@
 				<uni-drawer ref="showRight" :mask-click="false" mode="right" @change="change($event,'showRight')">
 					<view class="content">
 						<view class="th">
-							<text>文本设置</text>
+							<text>{{editorItem && editorItem.type == 'text' ? '文本':''}}设置</text>
 							<view class="close" @click="closeDrawer('showRight')">
 								<text class="iconfont icon-close"></text>
 							</view>
 						</view>
-						<view class="td setting">
+						<view class="td setting" v-if = "editorItem && editorItem.type == 'text'">
 							<view class="row">
 								<view class="tip">颜色</view>
 								<view class="opertion ">
-									<view class="color-set">
-										<view class="color" style="background: #FFFFFF;"></view>
-										<view class="color" style="background: #000000;"></view>
-										<view class="color" style="background: #ff0000;"></view>
-										<view class="color" style="background: #ffaa00;"></view>
-										<view class="color" style="background: #ffff00;"></view>
-										<view class="color" style="background: #00ff00;"></view>
-										<view class="color" style="background: #00ff7f;"></view>
-										<view class="color" style="background: #00aaff;"></view>
-										<view class="color" style="background: #5555ff;"></view>
-									</view>
+									<color @setColor = "setColor"></color>
 								</view> 
 							</view>
 							<view class="row">
@@ -178,7 +152,7 @@
 							<view class="row">
 								<view class="btn-wrap">
 									<view class="btn-ok">确认</view>
-									<view class="btn-cancel">取消</view>
+									<!-- <view class="btn-cancel">取消</view> -->
 								</view>
 							</view>
 						</view>
@@ -186,7 +160,7 @@
 				</uni-drawer>
 			</view>
 		</view>
-		<uni-popup ref="popup" type="center">
+		<uni-popup ref="create-img-popup" type="center">
 			<view class="popup-wrap">
 				<view class="show-poster">
 					
@@ -199,31 +173,26 @@
 						<!-- #ifdef MP-WEIXIN -->
 						<button type="default">保存到本地</button>
 						<!-- #endif -->
-						<button type="default" @click="closePopup">取消</button>
+						<button type="default" @click="closePopup('create-img-popup')">取消</button>
 					</view>
 				</view>
 			</view>
 		</uni-popup>
-		<!-- <uni-popup ref="popup" type="center">
-			<view class="picture-library">
-				<view class="pic-libary-title">
-					图片库
+		<uni-popup ref="page-popup" type="center">
+			<view class="modal page-popup">
+				<view class="item">
+					<view class="iconfont set icon-shezhi"></view>
+					<text>全局设置</text>
 				</view>
-				<view class="pic-libary-list">
-					<scroll-view scroll-y="true">
-						<view class="image-item">
-							<image src="../../../static/image/5.jpg" mode=""></image>
-						</view>
-						<view class="image-item">
-							<image src="../../../static/image/5.jpg" mode=""></image>
-						</view>
-						<view class="image-item">
-							<image src="../../../static/image/5.jpg" mode=""></image>
-						</view>
-					</scroll-view>
+				<view class="item set">
+					<view class="iconfont set icon-left-element" @click="addEle"></view>
+					<text>增加元素</text>
+				</view>
+				<view class="item ">
+					<view class="iconfont icon-close " @click="closePopup('page-popup')"></view>
 				</view>
 			</view>
-		</uni-popup> -->
+		</uni-popup>
 	</view>
 </template>
 
@@ -231,34 +200,29 @@
 	import uniDrawer from "@/components/uni-drawer/uni-drawer.vue"
 	import pageInfo from '@/static/lib/js/data.js'
 	import uniPopup from '@/components/uni-popup/uni-popup.vue'
-	import uniPopupMessage from '@/components/uni-popup/uni-popup-message.vue'
-	import uniPopupDialog from '@/components/uni-popup/uni-popup-dialog.vue'
+	import color from '@/components/color/color.vue'
+	
 	export default {
 		data() {
 			return {
-				// showRight: false,
-				// showLeft: false,
 				pageInfo:pageInfo,
 				poster:{},
 				array: ['中国', '美国', '巴西', '日本'],
-				index:0
+				index:0,
+				editorItem:null,
 			}
 		},
 		created() {
 			// console.log(this.pageInfo)
 			this.updatePageInfo()
 		},
-		mounted() {
-			
-		},
 		methods: {
-			openPopup(){
-				this.$refs.popup.open()
+			openPopup(e){
+				this.$refs[e].open()
 			},
-			closePopup(){
-				this.$refs.popup.close()
+			closePopup(e){
+				this.$refs[e].close()
 			},
-			confirm() {},
 			// 打开窗口
 			showDrawer(e) {
 				this.$refs[e].open()
@@ -271,6 +235,9 @@
 			change(e, type) {
 				console.log((type === 'showLeft' ? '左窗口' : '右窗口') + (e ? '打开' : '关闭'));
 				this[type] = e
+			},
+			setting(){
+				this.openPopup('page-popup')
 			},
 			bindPickerChange: function(e) {
 				console.log('picker发送选择改变，携带值为', e.target.value)
@@ -291,11 +258,11 @@
 					item.detail.y = item.detail.cy
 					return item
 				})
-				
-				
-			
 				console.log('updatePageInfo...')
-				
+			},
+			addEle(){
+				this.showDrawer('showLeft')
+				this.closePopup('page-popup')
 			},
 			async addContent(type){
 				const {content} = this.pageInfo
@@ -351,31 +318,20 @@
 					// x:item.detail.cx,
 					// y:item.detail.cy
 				 // })
-					
-				
-				
+			},
+			editContent(item){
+				this.editorItem = item
+				this.showDrawer('showRight')
+			},
+			setColor(c){
+				console.log(c)
+				this.editorItem.detail.color = c
 			}
 		},
-		onNavigationBarButtonTap(e) {
-			if (this.showLeft) {
-				this.$refs.showLeft.close()
-			} else {
-				this.$refs.showLeft.open()
-			}
-		},
-		// app端拦截返回事件 ，仅app端生效
-		// onBackPress() {
-		// 	if (this.showRight || this.showLeft) {
-		// 		this.$refs.showLeft.close()
-		// 		this.$refs.showRight.close()
-		// 		return true
-		// 	}
-		// },
 		components: {
 			uniDrawer,
 			uniPopup,
-			uniPopupMessage,
-			uniPopupDialog
+			color
 		}
 	}
 </script>
@@ -386,50 +342,96 @@
 		padding: 0;
 		box-sizing: border-box;
 	}
+	body,page{
+		background: #494a4b;
+	}
 	.make-poster {
 		position: relative;
 		// border: solid 1px #55aaff;
 		min-height: 200rpx;
 		
-		// .picture-library{
-		// 	position: fixed;
-		// 	bottom: 10px;
-		// 	left: 10px;
-		// 	top: 55px;
-		// 	right: 10px;
-		// 	background: #fff;
-		// 	display: flex;
-		// 	flex-direction: column;
-		// 	.pic-libary-title{
-		// 		height: 100rpx;
-		// 		background: #222324;
-		// 		color: #fff;
-		// 		line-height: 100rpx;
-		// 		padding-left: 20rpx;
-		// 	}
+		.page-popup{
+			position: fixed;
 			
-		// 	.pic-libary-list{
-		// 		flex: 1;
+			left: 30rpx;
+			bottom: 100rpx;
+			display: flex;
+			flex-direction: column;
 			
-		// 		scroll-view{
-		// 			padding: 10rpx;
-		// 			width: 100%;
-		// 				text-align: center;
-		// 			.image-item{
-		// 				display: inline;
-		// 				border: solid 1px red;
-		// 				width: 48%;
-		// 				float: left;
-		// 				// margin: 5rpx;
-		// 				&>image{
-		// 					width: 100%;
-		// 				}
-		// 			}
-		// 		}
+			.item{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				width: 150rpx;
+				height: 180rpx;
+				color: #fff;
+				font-size: 26rpx;
+				text-align: center;
+				&>text{
+					margin-top: 15rpx;
+				}
+				&>.set{
+					border-radius: 50%;
+					width: 100rpx;
+					height: 100rpx;
+					background: #d7d94a;
+					line-height: 105rpx;
+					font-size: 50rpx;
+				}
+				&>.icon-close{
+					font-size: 66rpx;
+					margin-top: 60rpx;
+				}
 				
-		// 	}
+			}
 			
-		// }
+		}
+		
+		.page-set{
+			position: fixed;
+			bottom: 60rpx;
+			left: 5%;
+			width: 100rpx;
+			height: 100rpx;
+			border-radius: 50%;
+			background: #ffffff;
+			text-align: center;
+			line-height: 88rpx;
+			font-size: 66rpx;
+			color: #5e5e5e;
+			&>view:nth-child(1){
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				width: 80rpx;
+				height: 80rpx;
+				border: solid 6rpx black;
+				border-top-color: #e40f2c;
+				border-right-color:#fad461 ;
+				border-bottom-color: #2cbded;
+				border-left-color: #2cbded;
+				border-radius: 50%;
+			}
+		}
+		
+		
+		
+		
+		.ok{
+			position: fixed;
+			bottom: 70rpx;
+			right: 5%;
+			width: 120rpx;
+			height: 60rpx;
+			background: #2cbded;
+			border-radius: 10rpx;
+			text-align: center;
+			line-height: 60rpx;
+			font-size: 26rpx;
+			color: #fff;
+		}
+		
 		.popup-wrap{
 			position: fixed;
 			bottom: 10px;
@@ -538,19 +540,7 @@
 			color: #C0C0C0;
 		}
 		
-		.ok{
-			position: fixed;
-			bottom: 60rpx;
-			right: 5%;
-			width: 100rpx;
-			height: 50rpx;
-			background: #007AFF;
-			border-radius: 10rpx;
-			text-align: center;
-			line-height: 50rpx;
-			font-size: 22rpx;
-			color: #fff;
-		}
+	
 
 
 		.drawer {
@@ -652,15 +642,7 @@
 								border-radius: 3px;
 								
 							}
-							.color-set{
-								display: flex;
-								align-items: center;
-								&>.color{
-									width: 35rpx;
-									height: 35rpx;
-									margin-right: 5rpx;
-								}
-							}
+							
 							
 							.sidebar{
 								display: flex;

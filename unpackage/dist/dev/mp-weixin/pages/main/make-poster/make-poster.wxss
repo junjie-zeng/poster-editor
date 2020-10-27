@@ -1,6 +1,95 @@
+page,
+page {
+  background: #494a4b;
+}
 .make-poster {
   position: relative;
   min-height: 200rpx;
+}
+.make-poster .page-popup {
+  position: fixed;
+  left: 30rpx;
+  bottom: 100rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+.make-poster .page-popup .item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  width: 150rpx;
+  height: 180rpx;
+  color: #fff;
+  font-size: 26rpx;
+  text-align: center;
+}
+.make-poster .page-popup .item > text {
+  margin-top: 15rpx;
+}
+.make-poster .page-popup .item > .set {
+  border-radius: 50%;
+  width: 100rpx;
+  height: 100rpx;
+  background: #d7d94a;
+  line-height: 105rpx;
+  font-size: 50rpx;
+}
+.make-poster .page-popup .item > .icon-close {
+  font-size: 66rpx;
+  margin-top: 60rpx;
+}
+.make-poster .page-set {
+  position: fixed;
+  bottom: 60rpx;
+  left: 5%;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: #ffffff;
+  text-align: center;
+  line-height: 88rpx;
+  font-size: 66rpx;
+  color: #5e5e5e;
+}
+.make-poster .page-set > view:nth-child(1) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 80rpx;
+  height: 80rpx;
+  border: solid 6rpx black;
+  border-top-color: #e40f2c;
+  border-right-color: #fad461;
+  border-bottom-color: #2cbded;
+  border-left-color: #2cbded;
+  border-radius: 50%;
+}
+.make-poster .ok {
+  position: fixed;
+  bottom: 70rpx;
+  right: 5%;
+  width: 120rpx;
+  height: 60rpx;
+  background: #2cbded;
+  border-radius: 10rpx;
+  text-align: center;
+  line-height: 60rpx;
+  font-size: 26rpx;
+  color: #fff;
 }
 .make-poster .popup-wrap {
   position: fixed;
@@ -85,19 +174,6 @@
   line-height: 200rpx;
   font-size: 60rpx;
   color: #C0C0C0;
-}
-.make-poster .ok {
-  position: fixed;
-  bottom: 60rpx;
-  right: 5%;
-  width: 100rpx;
-  height: 50rpx;
-  background: #007AFF;
-  border-radius: 10rpx;
-  text-align: center;
-  line-height: 50rpx;
-  font-size: 22rpx;
-  color: #fff;
 }
 .make-poster .drawer .content {
   background: #333435;
@@ -229,19 +305,6 @@
   text-align: center;
   background: #292929;
   border-radius: 3px;
-}
-.make-poster .drawer .content .setting .row .opertion .color-set {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
-}
-.make-poster .drawer .content .setting .row .opertion .color-set > .color {
-  width: 35rpx;
-  height: 35rpx;
-  margin-right: 5rpx;
 }
 .make-poster .drawer .content .setting .row .opertion .sidebar {
   display: -webkit-box;
