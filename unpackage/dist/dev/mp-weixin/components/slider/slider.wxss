@@ -1,0 +1,15 @@
+.slider {
+  position: relative;
+  width: 100%;
+}
+.slider uni-slider,
+.slider slider {
+  margin: 0 10rpx;
+  padding-right: 40rpx;
+}
+.slider > text {
+  position: absolute;
+  top: 0;
+  right: 2px;
+}
+

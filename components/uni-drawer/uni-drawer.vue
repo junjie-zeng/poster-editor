@@ -107,7 +107,8 @@
 		right: 0;
 		bottom: 0;
 		overflow: hidden;
-		z-index: 999;
+		// z-index: 999;
+		z-index: 0;
 	}
 
 	.uni-drawer__content {

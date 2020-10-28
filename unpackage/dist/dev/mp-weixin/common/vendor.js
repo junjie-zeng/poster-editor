@@ -2744,7 +2744,7 @@ var pageInfo = {
   {
     id: 0,
     type: 'text',
-    detail: { x: 0, y: 0, cx: 100, cy: 95, fontSize: 20, content: 'Nike', color: 'black' } }
+    detail: { x: 0, y: 0, cx: 100, cy: 95, fontSize: 20, content: 'Nike', color: 'black', fontFamily: '微软雅黑' } }
 
 
   // 后期类型：列表、图标
@@ -9713,7 +9713,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 63:
+/***/ 70:
 /*!*******************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/components/uni-popup/popup.js ***!
   \*******************************************************************************************/
@@ -9721,7 +9721,7 @@ if (hadRuntime) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 64));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 71));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 // 定义 type 类型:弹出类型：top/bottom/center
 var config = {
   // 顶部弹出
@@ -9748,7 +9748,7 @@ var config = {
 
 /***/ }),
 
-/***/ 64:
+/***/ 71:
 /*!*********************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/components/uni-popup/message.js ***!
   \*********************************************************************************************/

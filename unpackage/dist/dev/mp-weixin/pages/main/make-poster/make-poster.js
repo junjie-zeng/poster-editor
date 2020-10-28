@@ -97,10 +97,10 @@ var components = {
     return __webpack_require__.e(/*! import() | components/uni-drawer/uni-drawer */ "components/uni-drawer/uni-drawer").then(__webpack_require__.bind(null, /*! @/components/uni-drawer/uni-drawer.vue */ 51))
   },
   color: function() {
-    return __webpack_require__.e(/*! import() | components/color/color */ "components/color/color").then(__webpack_require__.bind(null, /*! @/components/color/color.vue */ 67))
+    return __webpack_require__.e(/*! import() | components/color/color */ "components/color/color").then(__webpack_require__.bind(null, /*! @/components/color/color.vue */ 58))
   },
   uniPopup: function() {
-    return Promise.all(/*! import() | components/uni-popup/uni-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-popup/uni-popup")]).then(__webpack_require__.bind(null, /*! @/components/uni-popup/uni-popup.vue */ 58))
+    return Promise.all(/*! import() | components/uni-popup/uni-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-popup/uni-popup")]).then(__webpack_require__.bind(null, /*! @/components/uni-popup/uni-popup.vue */ 65))
   }
 }
 var render = function() {
@@ -340,8 +340,73 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _data = _interopRequireDefault(__webpack_require__(/*! @/static/lib/js/data.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniDrawer = function uniDrawer() {__webpack_require__.e(/*! require.ensure | components/uni-drawer/uni-drawer */ "components/uni-drawer/uni-drawer").then((function () {return resolve(__webpack_require__(/*! @/components/uni-drawer/uni-drawer.vue */ 51));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var uniPopup = function uniPopup() {Promise.all(/*! require.ensure | components/uni-popup/uni-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-popup/uni-popup")]).then((function () {return resolve(__webpack_require__(/*! @/components/uni-popup/uni-popup.vue */ 58));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var color = function color() {__webpack_require__.e(/*! require.ensure | components/color/color */ "components/color/color").then((function () {return resolve(__webpack_require__(/*! @/components/color/color.vue */ 67));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _data = _interopRequireDefault(__webpack_require__(/*! @/static/lib/js/data.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniDrawer = function uniDrawer() {__webpack_require__.e(/*! require.ensure | components/uni-drawer/uni-drawer */ "components/uni-drawer/uni-drawer").then((function () {return resolve(__webpack_require__(/*! @/components/uni-drawer/uni-drawer.vue */ 51));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var uniPopup = function uniPopup() {Promise.all(/*! require.ensure | components/uni-popup/uni-popup */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-popup/uni-popup")]).then((function () {return resolve(__webpack_require__(/*! @/components/uni-popup/uni-popup.vue */ 65));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var color = function color() {__webpack_require__.e(/*! require.ensure | components/color/color */ "components/color/color").then((function () {return resolve(__webpack_require__(/*! @/components/color/color.vue */ 58));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 {
@@ -349,8 +414,8 @@ var _data = _interopRequireDefault(__webpack_require__(/*! @/static/lib/js/data.
     return {
       pageInfo: _data.default,
       poster: {},
-      array: ['中国', '美国', '巴西', '日本'],
-      index: 0,
+      fontFamily: ['微软雅黑', '宋体', '楷体', '黑体', '隶书', 'Verdana'],
+      fontFamilyIndex: 0,
       editorItem: null };
 
   },
@@ -381,10 +446,7 @@ var _data = _interopRequireDefault(__webpack_require__(/*! @/static/lib/js/data.
     setting: function setting() {
       this.openPopup('page-popup');
     },
-    bindPickerChange: function bindPickerChange(e) {
-      console.log('picker发送选择改变，携带值为', e.target.value);
-      this.index = e.target.value;
-    },
+
     // 获取元素宽高等属性
     getClientRect: function getClientRect(el) {
       return new Promise(function (resolve) {
@@ -468,6 +530,21 @@ var _data = _interopRequireDefault(__webpack_require__(/*! @/static/lib/js/data.
     setColor: function setColor(c) {
       console.log(c);
       this.editorItem.detail.color = c;
+    },
+    setSlider: function setSlider(ev) {
+      if (this.editorItem && this.editorItem.type == 'text') {var
+        num = ev.detail.value;
+        this.editorItem.detail.fontSize = num;
+
+      }
+    },
+    bindPickerChange: function bindPickerChange(e) {
+      if (this.editorItem && this.editorItem.type == 'text') {var
+        value = e.target.value;
+        this.fontFamilyIndex = value;
+        this.editorItem.detail.fontFamily = this.fontFamily[value];
+      }
+
     } },
 
   components: {

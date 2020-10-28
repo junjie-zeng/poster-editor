@@ -8,9 +8,13 @@
 			<view class=""></view>
 			+
 		</view>
-		<view class="ok" @click="openPopup('create-img-popup')">
+		<!-- <view class="ok" @click="openPopup('create-img-popup')">
+			完成
+		</view> -->
+		<view class="ok" @click="openPopup('picture-library-popup')">
 			完成
 		</view>
+		
 		<view class="drag">
 			<movable-area>
 				<movable-view
@@ -25,7 +29,9 @@
 					<!-- text -->
 					<view class="text" 
 							v-if="item.type == 'text'"
-							:style="{fontSize:item.detail.fontSize+'px',color:item.detail.color}">
+							:style="{fontSize:item.detail.fontSize+'px',
+									color:item.detail.color,
+									fontFamily:item.detail.fontFamily}">
 						{{item.detail.content}}
 					</view>
 					<!-- image -->
@@ -81,9 +87,34 @@
 				<uni-drawer ref="showRight" :mask-click="false" mode="right" @change="change($event,'showRight')">
 					<view class="content">
 						<view class="th">
-							<text>{{editorItem && editorItem.type == 'text' ? '文本':''}}设置</text>
-							<view class="close" @click="closeDrawer('showRight')">
+							<text>{{editorItem && editorItem.type == 'text' ? '文本':'图片'}}设置</text>
+							<!-- <view class="close" @click="closeDrawer('showRight')">
 								<text class="iconfont icon-close"></text>
+							</view> -->
+						</view>
+						<view class="td setting" v-if = "editorItem && editorItem.type == 'img'">
+							<view class="row">
+								<view class="img-box">
+									<image src="../../../static/image/nike.jpg" mode="widthFix"></image>
+									<view class="editor" @click="openPopup('picture-library-popup')">
+										<text class="iconfont icon-editor"></text>
+									</view>
+								</view>
+							</view>
+							<view class="row">
+								<view class="tip">圆角</view>
+								<view class="opertion">
+									<view class="slider">
+										<slider value="10" block-color = "#444546" activeColor="#444546" block-size="18" show-value min="22" max="60" step="1" @change = "setSlider"/>
+										<text>px</text>								
+									</view>
+								</view> 
+							</view>
+							<view class="row">
+								<view class="btn-wrap">
+									<view class="btn-ok" @click="closeDrawer('showRight')">确认</view>
+									<!-- <view class="btn-cancel">取消</view> -->
+								</view>
 							</view>
 						</view>
 						<view class="td setting" v-if = "editorItem && editorItem.type == 'text'">
@@ -97,12 +128,12 @@
 								<view class="tip">大小</view>
 								<view class="opertion">
 									<view class="slider">
-										<slider value="10" block-color = "#444546" activeColor="#444546" block-size="18" show-value min="22" max="60" step="1" />
+										<slider value="10" block-color = "#444546" activeColor="#444546" block-size="18" show-value min="22" max="60" step="1" @change = "setSlider"/>
 										<text>px</text>								
 									</view>
 								</view> 
 							</view>
-							<view class="row">
+						<!-- 	<view class="row">
 								<view class="tip">间距</view>
 								<view class="opertion">
 									<view class="slider">
@@ -119,13 +150,13 @@
 										<text>px</text>								
 									</view>
 								</view> 
-							</view>
+							</view> -->
 							<view class="row">
 								<view class="tip">字体</view>
 								<view class="opertion">
 									<view class="picker">
-										<picker @change="bindPickerChange" :value="index" :range="array">
-											<view class="uni-input">{{array[index]}}</view>
+										<picker @change="bindPickerChange" :value="fontFamilyIndex" :range="fontFamily">
+											<view class="uni-input">{{fontFamily[fontFamilyIndex]}}</view>
 										</picker>
 									</view>
 								</view>
@@ -145,13 +176,13 @@
 								<view class="tip">文本</view>
 								<view class="opertion">
 									<view class="textarea">
-										<textarea  placeholder="请输入文本"/>
+										<textarea  v-model="editorItem.detail.content"  placeholder="请输入文本"/>
 									</view>
 								</view>
 							</view>
 							<view class="row">
 								<view class="btn-wrap">
-									<view class="btn-ok">确认</view>
+									<view class="btn-ok" @click="closeDrawer('showRight')">确认</view>
 									<!-- <view class="btn-cancel">取消</view> -->
 								</view>
 							</view>
@@ -179,7 +210,7 @@
 			</view>
 		</uni-popup>
 		<uni-popup ref="page-popup" type="center">
-			<view class="modal page-popup">
+			<view class="page-popup">
 				<view class="item">
 					<view class="iconfont set icon-shezhi"></view>
 					<text>全局设置</text>
@@ -193,6 +224,41 @@
 				</view>
 			</view>
 		</uni-popup>
+		<uni-popup ref="picture-library-popup">
+			<view class="modal picture-library-popup">
+				<view class="library-title">
+					<text class="title">图片库</text>
+					<text class="iconfont icon-close"></text>
+				</view>
+				<view class="library-box">
+					<scroll-view style="height: 950rpx;" scroll-y="true">
+						<view class="item active" scroll-y="true" >
+							<image src="../../../static/image/4.png" mode=""></image>
+						</view>
+						<view class="item">
+							<image src="../../../static/image/2.png" mode=""></image>
+						</view>
+						<view class="item">
+							<image src="../../../static/image/3.png" mode=""></image>
+						</view>
+						<view class="item">
+							<image src="../../../static/image/1.png" mode=""></image>
+						</view>
+						<view class="item">
+							<image src="../../../static/image/1.png" mode=""></image>
+						</view>
+						<view class="item">
+							<image src="../../../static/image/1.png" mode=""></image>
+						</view>
+					</scroll-view>
+				</view>
+				<view class="library-btn">
+					<button type="default" class="upload">上传图片</button>
+					<button type="default" class="_ok">确认</button>
+					<button type="default" class="cancel">取消</button>
+				</view>
+			</view>
+		</uni-popup>
 	</view>
 </template>
 
@@ -201,14 +267,13 @@
 	import pageInfo from '@/static/lib/js/data.js'
 	import uniPopup from '@/components/uni-popup/uni-popup.vue'
 	import color from '@/components/color/color.vue'
-	
 	export default {
 		data() {
 			return {
 				pageInfo:pageInfo,
 				poster:{},
-				array: ['中国', '美国', '巴西', '日本'],
-				index:0,
+				fontFamily: ['微软雅黑', '宋体', '楷体', '黑体', '隶书', 'Verdana'],
+				fontFamilyIndex:0,
 				editorItem:null,
 			}
 		},
@@ -239,10 +304,7 @@
 			setting(){
 				this.openPopup('page-popup')
 			},
-			bindPickerChange: function(e) {
-				console.log('picker发送选择改变，携带值为', e.target.value)
-				this.index = e.target.value
-			},
+			
 			// 获取元素宽高等属性
 			getClientRect(el){
 				return new Promise((resolve)=>{
@@ -326,12 +388,27 @@
 			setColor(c){
 				console.log(c)
 				this.editorItem.detail.color = c
-			}
+			},
+			setSlider(ev){
+				if(this.editorItem && this.editorItem.type == 'text'){
+					const {value:num} = ev.detail
+					this.editorItem.detail.fontSize = num
+					
+				}
+			},
+			bindPickerChange: function(e) {
+				if(this.editorItem && this.editorItem.type == 'text'){
+					const {value} = e.target
+					this.fontFamilyIndex = value
+					this.editorItem.detail.fontFamily = this.fontFamily[value]
+				}
+				
+			},
 		},
 		components: {
 			uniDrawer,
 			uniPopup,
-			color
+			color,
 		}
 	}
 </script>
@@ -350,6 +427,84 @@
 		// border: solid 1px #55aaff;
 		min-height: 200rpx;
 		
+		.modal{
+			position: fixed;
+			top: 55px;
+			left: 10px;
+			right: 10px;
+			bottom: 10px;
+			background: #fff;
+			// #ifdef MP-WEIXIN
+			top: 10px;
+			// #endif
+		}
+		
+		
+		.picture-library-popup{
+			.library-title{
+				display: flex;
+				justify-content: space-between;
+				padding: 0 15rpx ;
+				height: 80rpx;
+				background: #222324;
+				line-height: 80rpx;
+				color: #fff;
+				
+			}
+			.library-box{
+				padding: 10rpx;
+				.item{
+					float: left;
+					width: 47%;
+					height: 400rpx;
+					border: solid 2px rgba(0,0,0,.05);
+					padding: 40rpx 0;
+					background: #fff;
+					margin:10rpx 5rpx;
+					
+					image{
+						width: 100%;
+						height: 100%;
+					}
+				}
+				.active{
+					border: solid 2px #1274e7;
+				}
+			}
+			
+			
+			.library-btn{
+				padding: 10rpx 20rpx;
+				margin-top: 30rpx;
+				// #ifdef MP-WEIXIN
+				margin-top: 15rpx;
+				// #endif
+				button{
+					width: 180rpx;
+					height: 80rpx;
+					line-height: 80rpx;
+					display: inline-block;
+					color: #fff;
+					border: none;
+					outline: none;
+					font-size: 32rpx;
+				}
+				.upload{
+					background: #00c853;
+				}
+				._ok,.cancel{
+					float: right;
+				}
+				._ok{
+					background: #1274e7;
+				}
+				.cancel{
+					background: #e1e1e1;
+					margin-right:15rpx;
+				}
+				
+			}
+		}
 		.page-popup{
 			position: fixed;
 			
@@ -414,9 +569,6 @@
 				border-radius: 50%;
 			}
 		}
-		
-		
-		
 		
 		.ok{
 			position: fixed;
@@ -673,7 +825,7 @@
 								margin-top: 10rpx;
 								&>textarea{
 									width: 100%;
-									height: 80rpx;
+									height: 200rpx;
 									background: #444546;
 									padding: 10rpx;
 									
@@ -682,6 +834,29 @@
 								
 							
 							
+						}
+						
+						.img-box{
+							position: relative;
+							width: 210px;
+							image{
+								width: 100%;
+							}
+							&>view{
+								position: absolute;
+								border-radius: 5px;
+								top: 10px;
+								right: 10px;
+								width: 80rpx;
+								height: 60rpx;
+								background: #00c853;
+								color: #fff;
+								text-align: center;
+								line-height: 60rpx;
+								.iconfont {
+									font-size: 50rpx;
+								}
+							}
 						}
 						
 						.btn-wrap{

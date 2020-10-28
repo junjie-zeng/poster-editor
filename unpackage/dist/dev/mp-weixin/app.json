@@ -30,5 +30,6 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap27.json"
 }

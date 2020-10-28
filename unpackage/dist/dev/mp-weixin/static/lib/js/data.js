@@ -15,7 +15,7 @@ let pageInfo = {
 		{
 			id:0,
 			type:'text',
-			detail:{x:0,y:0,cx:100,cy:95,fontSize:20,content:'Nike',color:'black'}
+			detail:{x:0,y:0,cx:100,cy:95,fontSize:20,content:'Nike',color:'black',fontFamily:'微软雅黑'}
 		},
 		
 		// 后期类型：列表、图标
