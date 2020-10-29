@@ -1,1 +1,0 @@
-<view class="slider"><slider value="10" block-color="#444546" activeColor="#444546" block-size="18" show-value="{{true}}" min="22" max="60" step="1" data-event-opts="{{[['change',[['setSlider',['$event']]]]]}}" bindchange="__e"></slider><text>px</text></view>

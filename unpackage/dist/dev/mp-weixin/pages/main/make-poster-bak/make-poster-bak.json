@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "uni-drawer": "/components/uni-drawer/uni-drawer",
+    "color": "/components/color/color",
+    "uni-popup": "/components/uni-popup/uni-popup"
+  }
+}

@@ -1,0 +1,45 @@
+.page-popup {
+  position: fixed;
+  left: 30rpx;
+  bottom: 100rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+.page-popup .item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  width: 150rpx;
+  height: 180rpx;
+  color: #fff;
+  font-size: 26rpx;
+  text-align: center;
+}
+.page-popup .item > text {
+  margin-top: 15rpx;
+}
+.page-popup .item > .set {
+  border-radius: 50%;
+  width: 100rpx;
+  height: 100rpx;
+  background: #d7d94a;
+  line-height: 105rpx;
+  font-size: 50rpx;
+}
+.page-popup .item > .icon-close {
+  font-size: 66rpx;
+  margin-top: 60rpx;
+}
+

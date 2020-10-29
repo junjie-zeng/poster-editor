@@ -1,7 +1,13 @@
 {
+  "navigationBarTitleText": "制作海报",
   "usingComponents": {
     "uni-drawer": "/components/uni-drawer/uni-drawer",
-    "color": "/components/color/color",
-    "uni-popup": "/components/uni-popup/uni-popup"
+    "uni-popup": "/components/uni-popup/uni-popup",
+    "drag": "/pages/main/drag/drag",
+    "page-popup": "/pages/main/page-popup/page-popup",
+    "add-content-panel": "/pages/main/add-content-panel/add-content-panel",
+    "edit-content-panel": "/pages/main/edit-content-panel/edit-content-panel",
+    "picture-librar-popup": "/pages/main/picture-library-popup/picture-library-popup",
+    "create-poster-popup": "/pages/main/create-poster-popup/create-poster-popup"
   }
 }

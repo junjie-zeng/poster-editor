@@ -34,7 +34,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.6);
   opacity: 0;
 }
 .mask-ani.data-v-7da806a4 {

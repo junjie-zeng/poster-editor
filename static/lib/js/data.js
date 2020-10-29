@@ -9,13 +9,13 @@ let pageInfo = {
 		{
 			id:2,
 			type:'img',
-			detail:{x:0,y:0,cx:228,cy:50,width:100,height:100,url:'../../../static/image/nike.jpg',borderRadius:10},
+			detail:{x:98,y:146,cx:98,cy:146,width:100,height:100,url:'../../../static/image/nike.jpg',borderRadius:10},
 			// borderRadius最大值50
 		},
 		{
 			id:0,
 			type:'text',
-			detail:{x:0,y:0,cx:100,cy:95,fontSize:20,content:'Nike',color:'black',fontFamily:'微软雅黑'}
+			detail:{x:100,y:95,cx:100,cy:95,fontSize:20,content:'Nike',color:'black',fontFamily:'微软雅黑'}
 		},
 		
 		// 后期类型：列表、图标

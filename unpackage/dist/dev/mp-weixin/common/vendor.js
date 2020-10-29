@@ -2703,6 +2703,72 @@ var index_esm = {
 
 /***/ }),
 
+/***/ 121:
+/*!*******************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/components/uni-popup/popup.js ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 122));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+// 定义 type 类型:弹出类型：top/bottom/center
+var config = {
+  // 顶部弹出
+  top: 'top',
+  // 底部弹出
+  bottom: 'bottom',
+  // 居中弹出
+  center: 'center',
+  // 消息提示
+  message: 'top',
+  // 对话框
+  dialog: 'center',
+  // 分享
+  share: 'bottom' };var _default =
+
+
+{
+  data: function data() {
+    return {
+      config: config };
+
+  },
+  mixins: [_message.default] };exports.default = _default;
+
+/***/ }),
+
+/***/ 122:
+/*!*********************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/components/uni-popup/message.js ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  created: function created() {
+    if (this.type === 'message') {
+      // 不显示遮罩
+      this.maskShow = false;
+      // 获取子组件对象
+      this.childrenMsg = null;
+    }
+  },
+  methods: {
+    customOpen: function customOpen() {
+      if (this.childrenMsg) {
+        this.childrenMsg.open();
+      }
+    },
+    customClose: function customClose() {
+      if (this.childrenMsg) {
+        this.childrenMsg.close();
+      }
+    } } };exports.default = _default;
+
+/***/ }),
+
 /***/ 13:
 /*!****************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/store/state.js ***!
@@ -2715,7 +2781,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 var _data = _interopRequireDefault(__webpack_require__(/*! @/static/lib/js/data.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 {
   title: 'hello word',
-  pageInfo: _data.default };exports.default = _default;
+  pageInfo: _data.default,
+  editIndex: -1 };exports.default = _default;
 
 /***/ }),
 
@@ -2738,13 +2805,13 @@ var pageInfo = {
   {
     id: 2,
     type: 'img',
-    detail: { x: 0, y: 0, cx: 228, cy: 50, width: 100, height: 100, url: '../../../static/image/nike.jpg', borderRadius: 10 }
+    detail: { x: 98, y: 146, cx: 98, cy: 146, width: 100, height: 100, url: '../../../static/image/nike.jpg', borderRadius: 10 }
     // borderRadius最大值50
   },
   {
     id: 0,
     type: 'text',
-    detail: { x: 0, y: 0, cx: 100, cy: 95, fontSize: 20, content: 'Nike', color: 'black', fontFamily: '微软雅黑' } }
+    detail: { x: 100, y: 95, cx: 100, cy: 95, fontSize: 20, content: 'Nike', color: 'black', fontFamily: '微软雅黑' } }
 
 
   // 后期类型：列表、图标
@@ -2779,10 +2846,16 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     });
     commit(_mutationTypes.UPDATE_PAGE_INFO, { pageInfo: pageInfo });
   },
-  changeCoordinate: function changeCoordinate(_ref3, _ref4) {var commit = _ref3.commit,state = _ref3.state;var index = _ref4.index,cx = _ref4.x,cy = _ref4.y;
+  changeCoordinate: function changeCoordinate(_ref3, _ref4) {var commit = _ref3.commit,state = _ref3.state;var index = _ref4.index,x = _ref4.x,y = _ref4.y;
     // console.log(index)
     // console.log(state.pageInfo.content)
-    commit(_mutationTypes.CHANGE_COORDINATE, { index: index, cx: cx, cy: cy });
+    commit(_mutationTypes.CHANGE_COORDINATE, { index: index, x: x, y: y });
+  },
+  setEditIndex: function setEditIndex(_ref5, index) {var commit = _ref5.commit,state = _ref5.state;
+    commit(_mutationTypes.EDIT_INDEX, index);
+  },
+  updateAttrValue: function updateAttrValue(_ref6, _ref7) {var commit = _ref6.commit;var key = _ref7.key,value = _ref7.value;
+    commit(_mutationTypes.UPDATE_ATTR_VALUE, { key: key, value: value });
   } };exports.default = _default;
 
 /***/ }),
@@ -2795,16 +2868,20 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.CHANGE_COORDINATE = exports.ADD_CONTENT = exports.UPDATE_PAGE_INFO = void 0;
+Object.defineProperty(exports, "__esModule", { value: true });exports.UPDATE_ATTR_VALUE = exports.EDIT_INDEX = exports.CHANGE_COORDINATE = exports.ADD_CONTENT = exports.UPDATE_PAGE_INFO = void 0;
 
 // update
-var UPDATE_PAGE_INFO = 'update_page_info';
+var UPDATE_PAGE_INFO = 'UPDATE_PAGE_INFO';
 
 // add
-exports.UPDATE_PAGE_INFO = UPDATE_PAGE_INFO;var ADD_CONTENT = 'add_content';
+exports.UPDATE_PAGE_INFO = UPDATE_PAGE_INFO;var ADD_CONTENT = 'ADD_CONTENT';
 
 // update x y
-exports.ADD_CONTENT = ADD_CONTENT;var CHANGE_COORDINATE = 'change_coordinate';exports.CHANGE_COORDINATE = CHANGE_COORDINATE;
+exports.ADD_CONTENT = ADD_CONTENT;var CHANGE_COORDINATE = 'CHANGE_COORDINATE';exports.CHANGE_COORDINATE = CHANGE_COORDINATE;
+
+var EDIT_INDEX = 'EDIT_INDEX';exports.EDIT_INDEX = EDIT_INDEX;
+
+var UPDATE_ATTR_VALUE = 'UPDATE_ATTR_VALUE';exports.UPDATE_ATTR_VALUE = UPDATE_ATTR_VALUE;
 
 /***/ }),
 
@@ -2829,9 +2906,17 @@ _mutationTypes.ADD_CONTENT, function (state, _ref) {var content = _ref.content;
 _mutationTypes.UPDATE_PAGE_INFO, function (state, _ref2) {var pageInfo = _ref2.pageInfo;
   state.pageInfo = pageInfo;
 }), _defineProperty(_ADD_CONTENT$UPDATE_P,
-_mutationTypes.CHANGE_COORDINATE, function (state, _ref3) {var index = _ref3.index,cx = _ref3.cx,cy = _ref3.cy;
-  state.pageInfo.content[index].detail.x = cx;
-  state.pageInfo.content[index].detail.y = cy;
+_mutationTypes.CHANGE_COORDINATE, function (state, _ref3) {var index = _ref3.index,x = _ref3.x,y = _ref3.y;
+  state.pageInfo.content[index].detail.x = x;
+  state.pageInfo.content[index].detail.y = y;
+}), _defineProperty(_ADD_CONTENT$UPDATE_P,
+_mutationTypes.EDIT_INDEX, function (state, index) {
+  state.editIndex = index;
+}), _defineProperty(_ADD_CONTENT$UPDATE_P,
+
+_mutationTypes.UPDATE_ATTR_VALUE, function (state, _ref4) {var key = _ref4.key,value = _ref4.value;
+  var index = state.editIndex;
+  state.pageInfo.content[index].detail[key] = value;
 }), _ADD_CONTENT$UPDATE_P);exports.default = _default;
 
 /***/ }),
@@ -9713,69 +9798,82 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 70:
-/*!*******************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/components/uni-popup/popup.js ***!
-  \*******************************************************************************************/
+/***/ 54:
+/*!****************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/common/mixins/broadcast.js ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 71));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-// 定义 type 类型:弹出类型：top/bottom/center
-var config = {
-  // 顶部弹出
-  top: 'top',
-  // 底部弹出
-  bottom: 'bottom',
-  // 居中弹出
-  center: 'center',
-  // 消息提示
-  message: 'top',
-  // 对话框
-  dialog: 'center',
-  // 分享
-  share: 'bottom' };var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
+
+var _ev = _interopRequireDefault(__webpack_require__(/*! @/static/lib/js/ev.js */ 55));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 {
   data: function data() {
-    return {
-      config: config };
+    return {};
+
 
   },
-  mixins: [_message.default] };exports.default = _default;
+  onLoad: function onLoad(options) {
+
+  },
+  methods: {
+    // eg:
+    // this.open('Drawer','add-content-panel','open')
+    // this.close('Popup','page-popup','close')
+
+    close: function close(target, key, status) {
+      _ev.default.$emit(target, { key: key, status: status });
+    },
+    open: function open(target, key, status) {
+      _ev.default.$emit(target, { key: key, status: status });
+    } } };exports.default = _default;
 
 /***/ }),
 
-/***/ 71:
-/*!*********************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/components/uni-popup/message.js ***!
-  \*********************************************************************************************/
+/***/ 55:
+/*!*********************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/static/lib/js/ev.js ***!
+  \*********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
-  created: function created() {
-    if (this.type === 'message') {
-      // 不显示遮罩
-      this.maskShow = false;
-      // 获取子组件对象
-      this.childrenMsg = null;
-    }
-  },
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
+new _vue.default();exports.default = _default;
+
+/***/ }),
+
+/***/ 70:
+/*!**************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/common/mixins/wxAsync.js ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
+
+
+
+
+
+{
   methods: {
-    customOpen: function customOpen() {
-      if (this.childrenMsg) {
-        this.childrenMsg.open();
-      }
-    },
-    customClose: function customClose() {
-      if (this.childrenMsg) {
-        this.childrenMsg.close();
-      }
+    // 获取元素宽高等属性
+    getClientRect: function getClientRect(el) {
+      return new Promise(function (resolve) {
+        uni.createSelectorQuery().selectAll(el).boundingClientRect(function (rect) {
+          // console.log(rect)
+          resolve(rect[0]);
+        }).exec();
+      });
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
 

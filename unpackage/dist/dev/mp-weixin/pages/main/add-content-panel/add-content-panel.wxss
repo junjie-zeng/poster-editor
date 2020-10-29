@@ -1,0 +1,86 @@
+.add-content-panel {
+  background: #333435;
+  height: 100%;
+  color: #aaabac;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.add-content-panel .th {
+  height: 80rpx;
+  width: 100%;
+  background: #1274e7;
+  color: #fff;
+  font-size: 26rpx;
+  text-align: center;
+  line-height: 80rpx;
+}
+.add-content-panel .th .close {
+  display: inline-block;
+  float: right;
+  margin-right: 20rpx;
+  font-size: 32rpx;
+}
+.add-content-panel .td {
+  padding: 10rpx 10rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.add-content-panel .td .item {
+  -webkit-box-flex: 40%;
+  -webkit-flex: 40%;
+          flex: 40%;
+  height: 100px;
+  text-align: center;
+  margin: 10rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 10rpx;
+  background: #444546;
+  font-size: 28rpx;
+}
+.add-content-panel .td .item .icon {
+  -webkit-box-flex: 2;
+  -webkit-flex: 2;
+          flex: 2;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+          align-items: flex-end;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  font-size: 88rpx;
+}
+.add-content-panel .td .item .text {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+

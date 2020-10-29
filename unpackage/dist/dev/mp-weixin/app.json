@@ -7,16 +7,22 @@
     {
       "root": "pages/main",
       "pages": [
+        "make-poster-bak/make-poster-bak",
         "make-poster/make-poster",
-        "test/test"
+        "drag/drag",
+        "page-popup/page-popup",
+        "add-content-panel/add-content-panel",
+        "edit-content-panel/edit-content-panel",
+        "picture-library-popup/picture-library-popup",
+        "create-poster-popup/create-poster-popup"
       ]
     }
   ],
   "window": {
-    "navigationBarTextStyle": "black",
     "navigationBarTitleText": "POSTER",
-    "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
+    "backgroundColor": "#F8F8F8",
+    "navigationBarBackgroundColor": "#333435",
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "list": [
@@ -31,5 +37,5 @@
     ]
   },
   "usingComponents": {},
-  "sitemapLocation": "sitemap27.json"
+  "sitemapLocation": "sitemap59.json"
 }

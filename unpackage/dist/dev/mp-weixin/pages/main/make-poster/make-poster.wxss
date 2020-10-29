@@ -1,82 +1,33 @@
-page,
-page {
-  background: #494a4b;
-}
-.make-poster {
+.drag-poster {
   position: relative;
   min-height: 200rpx;
 }
-.make-poster .modal {
-  position: fixed;
-  top: 55px;
-  left: 10px;
-  right: 10px;
-  bottom: 10px;
-  background: #fff;
-  top: 10px;
+.drag-poster .poster > image {
+  vertical-align: bottom;
+  width: 100%;
 }
-.make-poster .picture-library-popup .library-title {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-          justify-content: space-between;
-  padding: 0 15rpx ;
-  height: 80rpx;
-  background: #222324;
-  line-height: 80rpx;
-  color: #fff;
+.drag-poster .drag movable-area {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
 }
-.make-poster .picture-library-popup .library-box {
-  padding: 10rpx;
+.drag-poster .drag movable-area movable-view {
+  position: absolute;
+  height: auto;
+  width: auto;
 }
-.make-poster .picture-library-popup .library-box .item {
-  float: left;
-  width: 47%;
-  height: 400rpx;
-  border: solid 2px rgba(0, 0, 0, 0.05);
-  padding: 40rpx 0;
-  background: #fff;
-  margin: 10rpx 5rpx;
+.drag-poster .drag movable-area .text {
+  height: auto;
+  width: auto;
 }
-.make-poster .picture-library-popup .library-box .item image {
+.drag-poster .drag movable-area .img > image {
   width: 100%;
   height: 100%;
 }
-.make-poster .picture-library-popup .library-box .active {
-  border: solid 2px #1274e7;
-}
-.make-poster .picture-library-popup .library-btn {
-  padding: 10rpx 20rpx;
-  margin-top: 30rpx;
-  margin-top: 15rpx;
-}
-.make-poster .picture-library-popup .library-btn button {
-  width: 180rpx;
-  height: 80rpx;
-  line-height: 80rpx;
-  display: inline-block;
-  color: #fff;
-  border: none;
-  outline: none;
-  font-size: 32rpx;
-}
-.make-poster .picture-library-popup .library-btn .upload {
-  background: #00c853;
-}
-.make-poster .picture-library-popup .library-btn ._ok,
-.make-poster .picture-library-popup .library-btn .cancel {
-  float: right;
-}
-.make-poster .picture-library-popup .library-btn ._ok {
-  background: #1274e7;
-}
-.make-poster .picture-library-popup .library-btn .cancel {
-  background: #e1e1e1;
-  margin-right: 15rpx;
-}
-.make-poster .page-popup {
+
+.page-popup {
   position: fixed;
   left: 30rpx;
   bottom: 100rpx;
@@ -88,7 +39,7 @@ page {
   -webkit-flex-direction: column;
           flex-direction: column;
 }
-.make-poster .page-popup .item {
+.page-popup .item {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -105,10 +56,10 @@ page {
   font-size: 26rpx;
   text-align: center;
 }
-.make-poster .page-popup .item > text {
+.page-popup .item > text {
   margin-top: 15rpx;
 }
-.make-poster .page-popup .item > .set {
+.page-popup .item > .set {
   border-radius: 50%;
   width: 100rpx;
   height: 100rpx;
@@ -116,136 +67,12 @@ page {
   line-height: 105rpx;
   font-size: 50rpx;
 }
-.make-poster .page-popup .item > .icon-close {
+.page-popup .item > .icon-close {
   font-size: 66rpx;
   margin-top: 60rpx;
 }
-.make-poster .page-set {
-  position: fixed;
-  bottom: 60rpx;
-  left: 5%;
-  width: 100rpx;
-  height: 100rpx;
-  border-radius: 50%;
-  background: #ffffff;
-  text-align: center;
-  line-height: 88rpx;
-  font-size: 66rpx;
-  color: #5e5e5e;
-}
-.make-poster .page-set > view:nth-child(1) {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  width: 80rpx;
-  height: 80rpx;
-  border: solid 6rpx black;
-  border-top-color: #e40f2c;
-  border-right-color: #fad461;
-  border-bottom-color: #2cbded;
-  border-left-color: #2cbded;
-  border-radius: 50%;
-}
-.make-poster .ok {
-  position: fixed;
-  bottom: 70rpx;
-  right: 5%;
-  width: 120rpx;
-  height: 60rpx;
-  background: #2cbded;
-  border-radius: 10rpx;
-  text-align: center;
-  line-height: 60rpx;
-  font-size: 26rpx;
-  color: #fff;
-}
-.make-poster .popup-wrap {
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-  top: 55px;
-  right: 10px;
-  background: #fff;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
-}
-.make-poster .popup-wrap .show-poster {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-          flex: 1;
-  background: pink;
-}
-.make-poster .popup-wrap .save-poster {
-  padding: 10rpx 20rpx;
-  height: 300rpx;
-  text-align: center;
-}
-.make-poster .popup-wrap .save-poster .save-tips {
-  font-size: 32rpx;
-  color: #aaa1a1;
-}
-.make-poster .popup-wrap .save-poster .save-btn > button {
-  margin-top: 20rpx;
-  outline: none;
-  color: #fff;
-  font-size: 32rpx;
-}
-.make-poster .popup-wrap .save-poster .save-btn button:nth-child(1) {
-  background: #007aff;
-}
-.make-poster .popup-wrap .save-poster .save-btn button:nth-child(2) {
-  border: solid 1px #007aff;
-  color: #007aff;
-}
-.make-poster .popup-wrap {
-  top: 10px;
-}
-.make-poster .poster > image {
-  vertical-align: bottom;
-  width: 100%;
-}
-.make-poster .drag movable-area {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-}
-.make-poster .drag movable-area movable-view {
-  position: absolute;
-  height: auto;
-  width: auto;
-}
-.make-poster .drag movable-area .text {
-  height: auto;
-  width: auto;
-}
-.make-poster .drag movable-area .img > image {
-  width: 100%;
-  height: 100%;
-}
-.make-poster .add-poster {
-  position: fixed;
-  left: 50%;
-  top: 40%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  height: 200rpx;
-  width: 200rpx;
-  background: pink;
-  text-align: center;
-  line-height: 200rpx;
-  font-size: 60rpx;
-  color: #C0C0C0;
-}
-.make-poster .drawer .content {
+
+.add-content-panel {
   background: #333435;
   height: 100%;
   color: #aaabac;
@@ -260,7 +87,7 @@ page {
   -webkit-align-items: center;
           align-items: center;
 }
-.make-poster .drawer .content .th {
+.add-content-panel .th {
   height: 80rpx;
   width: 100%;
   background: #1274e7;
@@ -269,13 +96,13 @@ page {
   text-align: center;
   line-height: 80rpx;
 }
-.make-poster .drawer .content .th .close {
+.add-content-panel .th .close {
   display: inline-block;
   float: right;
   margin-right: 20rpx;
   font-size: 32rpx;
 }
-.make-poster .drawer .content .td {
+.add-content-panel .td {
   padding: 10rpx 10rpx;
   display: -webkit-box;
   display: -webkit-flex;
@@ -283,7 +110,7 @@ page {
   -webkit-flex-wrap: wrap;
           flex-wrap: wrap;
 }
-.make-poster .drawer .content .td .item {
+.add-content-panel .td .item {
   -webkit-box-flex: 40%;
   -webkit-flex: 40%;
           flex: 40%;
@@ -301,7 +128,7 @@ page {
   background: #444546;
   font-size: 28rpx;
 }
-.make-poster .drawer .content .td .item .icon {
+.add-content-panel .td .item .icon {
   -webkit-box-flex: 2;
   -webkit-flex: 2;
           flex: 2;
@@ -316,7 +143,7 @@ page {
           justify-content: center;
   font-size: 88rpx;
 }
-.make-poster .drawer .content .td .item .text {
+.add-content-panel .td .item .text {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
           flex: 1;
@@ -330,7 +157,93 @@ page {
   -webkit-justify-content: center;
           justify-content: center;
 }
-.make-poster .drawer .content .setting .row {
+
+.edit-content-panel {
+  background: #333435;
+  height: 100%;
+  color: #aaabac;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.edit-content-panel .th {
+  height: 80rpx;
+  width: 100%;
+  background: #1274e7;
+  color: #fff;
+  font-size: 26rpx;
+  text-align: center;
+  line-height: 80rpx;
+}
+.edit-content-panel .th .close {
+  display: inline-block;
+  float: right;
+  margin-right: 20rpx;
+  font-size: 32rpx;
+}
+.edit-content-panel .td {
+  padding: 10rpx 10rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.edit-content-panel .td .item {
+  -webkit-box-flex: 40%;
+  -webkit-flex: 40%;
+          flex: 40%;
+  height: 100px;
+  text-align: center;
+  margin: 10rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 10rpx;
+  background: #444546;
+  font-size: 28rpx;
+}
+.edit-content-panel .td .item .icon {
+  -webkit-box-flex: 2;
+  -webkit-flex: 2;
+          flex: 2;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+          align-items: flex-end;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  font-size: 88rpx;
+}
+.edit-content-panel .td .item .text {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.edit-content-panel .setting .row {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -339,10 +252,10 @@ page {
   font-size: 28rpx;
   width: 100%;
 }
-.make-poster .drawer .content .setting .row .tip {
+.edit-content-panel .setting .row .tip {
   width: 35px;
 }
-.make-poster .drawer .content .setting .row .opertion {
+.edit-content-panel .setting .row .opertion {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
           flex: 1;
@@ -354,21 +267,21 @@ page {
   -webkit-align-items: center;
           align-items: center;
 }
-.make-poster .drawer .content .setting .row .opertion .slider {
+.edit-content-panel .setting .row .opertion .slider {
   position: relative;
   width: 100%;
 }
-.make-poster .drawer .content .setting .row .opertion .slider uni-slider,
-.make-poster .drawer .content .setting .row .opertion .slider slider {
+.edit-content-panel .setting .row .opertion .slider uni-slider,
+.edit-content-panel .setting .row .opertion .slider slider {
   margin: 0 10rpx;
   padding-right: 40rpx;
 }
-.make-poster .drawer .content .setting .row .opertion .slider > text {
+.edit-content-panel .setting .row .opertion .slider > text {
   position: absolute;
   top: 0;
   right: 2px;
 }
-.make-poster .drawer .content .setting .row .opertion .picker {
+.edit-content-panel .setting .row .opertion .picker {
   width: 100%;
   height: 65rpx;
   line-height: 65rpx;
@@ -376,7 +289,7 @@ page {
   background: #292929;
   border-radius: 3px;
 }
-.make-poster .drawer .content .setting .row .opertion .sidebar {
+.edit-content-panel .setting .row .opertion .sidebar {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -386,41 +299,41 @@ page {
   border-radius: 3px;
   overflow: hidden;
 }
-.make-poster .drawer .content .setting .row .opertion .sidebar > view {
+.edit-content-panel .setting .row .opertion .sidebar > view {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
           flex: 1;
   text-align: center;
   background: #555657;
 }
-.make-poster .drawer .content .setting .row .opertion .sidebar > view:nth-child(2) {
+.edit-content-panel .setting .row .opertion .sidebar > view:nth-child(2) {
   border-left: solid 1px #454545;
   border-right: solid 1px #454545;
 }
-.make-poster .drawer .content .setting .row .opertion .sidebar > .active {
+.edit-content-panel .setting .row .opertion .sidebar > .active {
   background: #1274e7;
   color: #fff;
 }
-.make-poster .drawer .content .setting .row .opertion .textarea {
+.edit-content-panel .setting .row .opertion .textarea {
   width: 100%;
   overflow: hidden;
   border-radius: 3px;
   margin-top: 10rpx;
 }
-.make-poster .drawer .content .setting .row .opertion .textarea > textarea {
+.edit-content-panel .setting .row .opertion .textarea > textarea {
   width: 100%;
   height: 200rpx;
   background: #444546;
   padding: 10rpx;
 }
-.make-poster .drawer .content .setting .row .img-box {
+.edit-content-panel .setting .row .img-box {
   position: relative;
   width: 210px;
 }
-.make-poster .drawer .content .setting .row .img-box image {
+.edit-content-panel .setting .row .img-box image {
   width: 100%;
 }
-.make-poster .drawer .content .setting .row .img-box > view {
+.edit-content-panel .setting .row .img-box > view {
   position: absolute;
   border-radius: 5px;
   top: 10px;
@@ -432,10 +345,10 @@ page {
   text-align: center;
   line-height: 60rpx;
 }
-.make-poster .drawer .content .setting .row .img-box > view .iconfont {
+.edit-content-panel .setting .row .img-box > view .iconfont {
   font-size: 50rpx;
 }
-.make-poster .drawer .content .setting .row .btn-wrap {
+.edit-content-panel .setting .row .btn-wrap {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -445,7 +358,7 @@ page {
           align-items: center;
   margin-top: 20rpx;
 }
-.make-poster .drawer .content .setting .row .btn-wrap > view {
+.edit-content-panel .setting .row .btn-wrap > view {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
           flex: 1;
@@ -455,31 +368,172 @@ page {
   color: #fff;
   border-radius: 5rpx;
 }
-.make-poster .drawer .content .setting .row .btn-wrap .btn-ok {
+.edit-content-panel .setting .row .btn-wrap .btn-ok {
   background: #00c853;
   margin-right: 5rpx;
 }
-.make-poster .drawer .content .setting .row .btn-wrap .btn-cancel {
+.edit-content-panel .setting .row .btn-wrap .btn-cancel {
   background: #555657;
   margin-left: 5rpx;
 }
-.make-poster .add-content {
+
+.picture-library-popup .library-title {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  padding: 0 15rpx ;
+  height: 80rpx;
+  background: #1274e7;
+  line-height: 80rpx;
+  color: #fff;
+}
+.picture-library-popup .library-box {
+  padding: 10rpx;
+}
+.picture-library-popup .library-box .item {
+  float: left;
+  width: 47%;
+  height: 400rpx;
+  border: solid 2px rgba(0, 0, 0, 0.05);
+  padding: 40rpx 0;
+  background: #fff;
+  margin: 10rpx 5rpx;
+}
+.picture-library-popup .library-box .item image {
+  width: 100%;
+  height: 100%;
+}
+.picture-library-popup .library-box .active {
+  border: solid 2px #1274e7;
+}
+.picture-library-popup .library-btn {
+  padding: 10rpx 20rpx;
+  margin-top: 30rpx;
+  margin-top: 15rpx;
+}
+.picture-library-popup .library-btn button {
+  width: 180rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  display: inline-block;
+  color: #fff;
+  border: none;
+  outline: none;
+  font-size: 32rpx;
+}
+.picture-library-popup .library-btn .upload {
+  width: 200rpx;
+  background: #00c853;
+}
+.picture-library-popup .library-btn ._ok,
+.picture-library-popup .library-btn .cancel {
+  float: right;
+}
+.picture-library-popup .library-btn ._ok {
+  background: #1274e7;
+}
+.picture-library-popup .library-btn .cancel {
+  background: #e1e1e1;
+  margin-right: 15rpx;
+}
+
+.create-poster-popup {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  top: 55px;
+  right: 10px;
+  background: #fff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  top: 10px;
+}
+.create-poster-popup .show-poster {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  background: #494a4b;
+}
+.create-poster-popup .show-poster image {
+  width: 100%;
+}
+.create-poster-popup .save-poster {
+  padding: 10rpx 20rpx;
+  height: 300rpx;
+  text-align: center;
+}
+.create-poster-popup .save-poster .save-tips {
+  font-size: 32rpx;
+  color: #aaa1a1;
+}
+.create-poster-popup .save-poster .save-btn > button {
+  margin-top: 20rpx;
+  outline: none;
+  color: #fff;
+  font-size: 32rpx;
+}
+.create-poster-popup .save-poster .save-btn button:nth-child(1) {
+  background: #007aff;
+}
+.create-poster-popup .save-poster .save-btn button:nth-child(2) {
+  border: solid 1px #007aff;
+  color: #007aff;
+}
+.popup-wrap {
+  top: 10px;
+}
+
+page,
+page {
+  background: #494a4b;
+}
+.poster-box .page-setting {
   position: fixed;
   bottom: 60rpx;
   left: 5%;
   width: 100rpx;
   height: 100rpx;
   border-radius: 50%;
-  background: #007AFF;
+  background: #ffffff;
   text-align: center;
   line-height: 88rpx;
-  font-size: 88rpx;
-  color: #FFFFFF;
+  font-size: 66rpx;
+  color: #5e5e5e;
 }
-.make-poster .hide-canvas {
+.poster-box .page-setting > view:nth-child(1) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 80rpx;
+  height: 80rpx;
+  border: solid 6rpx black;
+  border-top-color: #e40f2c;
+  border-right-color: #fad461;
+  border-bottom-color: #2cbded;
+  border-left-color: #2cbded;
+  border-radius: 50%;
+}
+.poster-box .page-complete {
   position: fixed;
-  top: -99999rpx;
-  left: -99999rpx;
-  z-index: -99999;
+  bottom: 70rpx;
+  right: 5%;
+  width: 120rpx;
+  height: 60rpx;
+  background: #2cbded;
+  border-radius: 10rpx;
+  text-align: center;
+  line-height: 60rpx;
+  font-size: 26rpx;
+  color: #fff;
 }
 

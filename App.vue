@@ -16,4 +16,15 @@
 	/*每个页面公共css */
 	@import url("static/css/index.css");
 	
+	.modal{
+		position: fixed;
+		top: 55px;
+		left: 10px;
+		right: 10px;
+		bottom: 10px;
+		background: #fff;
+		// #ifdef MP-WEIXIN
+		top: 10px;
+		// #endif
+	}
 </style>
