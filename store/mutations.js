@@ -1,5 +1,5 @@
 
-import { UPDATE_PAGE_INFO,ADD_CONTENT,CHANGE_COORDINATE,EDIT_INDEX ,UPDATE_ATTR_VALUE} from './mutation-types.js'
+import { UPDATE_PAGE_INFO,ADD_CONTENT,CHANGE_COORDINATE,EDIT_INDEX ,UPDATE_ATTR_VALUE,UPDATE_POSTER} from './mutation-types.js'
 import Vue from 'vue'
 export default{
 	[ADD_CONTENT](state,{content}){
@@ -22,5 +22,8 @@ export default{
 	[UPDATE_ATTR_VALUE](state,{key,value}){
 		let index = state.editIndex
 		state.pageInfo.content[index].detail[key] = value
+	},
+	[UPDATE_POSTER](state,url){
+		state.posterUrl = url
 	}
 }

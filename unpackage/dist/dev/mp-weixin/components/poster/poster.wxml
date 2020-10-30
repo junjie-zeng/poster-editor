@@ -1,0 +1,1 @@
+<view class="hideCanvas"><canvas style="{{'width:'+((poster.width||1)+'px')+';'+('height:'+((poster.height||1)+'px')+';')}}" canvas-id="poster"></canvas></view>

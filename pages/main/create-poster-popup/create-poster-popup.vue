@@ -1,7 +1,7 @@
 <template>
 	<view class="create-poster-popup">
 		<view class="show-poster">
-			<image src="../../../static/image/5.jpg" ></image>
+			<image :src="posterUrl" ></image>
 		</view>
 		<view class="save-poster">
 			<view class="save-tips">
@@ -19,6 +19,7 @@
 
 <script>
 	import broadcast from '../../../common/mixins/broadcast.js'
+	import { mapState } from 'vuex'
 	export default {
 		props:['pageInfo'],
 		mixins:[broadcast],
@@ -26,6 +27,9 @@
 			return {
 				
 			}
+		},
+		computed:{
+			...mapState(['posterUrl'])
 		},
 		methods: {
 			cancel(){

@@ -1,4 +1,4 @@
-import { UPDATE_PAGE_INFO,ADD_CONTENT,CHANGE_COORDINATE ,EDIT_INDEX,UPDATE_ATTR_VALUE} from './mutation-types.js'
+import { UPDATE_PAGE_INFO,ADD_CONTENT,CHANGE_COORDINATE ,EDIT_INDEX,UPDATE_ATTR_VALUE,UPDATE_POSTER} from './mutation-types.js'
 
 export default{
 	addContent({commit,state},content){
@@ -24,5 +24,8 @@ export default{
 	},
 	updateAttrValue({commit},{key,value}){
 		commit(UPDATE_ATTR_VALUE,{key,value})
+	},
+	setPosterUrl({commit},url){
+		commit(UPDATE_POSTER,url)
 	}
 }

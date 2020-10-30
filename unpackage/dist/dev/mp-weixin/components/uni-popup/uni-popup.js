@@ -78,7 +78,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uniTransition: function() {
-    return __webpack_require__.e(/*! import() | components/uni-transition/uni-transition */ "components/uni-transition/uni-transition").then(__webpack_require__.bind(null, /*! @/components/uni-transition/uni-transition.vue */ 125))
+    return __webpack_require__.e(/*! import() | components/uni-transition/uni-transition */ "components/uni-transition/uni-transition").then(__webpack_require__.bind(null, /*! @/components/uni-transition/uni-transition.vue */ 132))
   }
 }
 var render = function() {
@@ -132,7 +132,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
-var _popup = _interopRequireDefault(__webpack_require__(/*! ./popup.js */ 121));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var uniTransition = function uniTransition() {__webpack_require__.e(/*! require.ensure | components/uni-transition/uni-transition */ "components/uni-transition/uni-transition").then((function () {return resolve(__webpack_require__(/*! ../uni-transition/uni-transition.vue */ 125));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
+var _popup = _interopRequireDefault(__webpack_require__(/*! ./popup.js */ 121));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var uniTransition = function uniTransition() {__webpack_require__.e(/*! require.ensure | components/uni-transition/uni-transition */ "components/uni-transition/uni-transition").then((function () {return resolve(__webpack_require__(/*! ../uni-transition/uni-transition.vue */ 132));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
 /**
                                                                                                                                                                                                                                                                                                                                                          * PopUp 弹出层
                                                                                                                                                                                                                                                                                                                                                          * @description 弹出层组件，为了解决遮罩弹层的问题

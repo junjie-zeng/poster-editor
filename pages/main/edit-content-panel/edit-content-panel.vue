@@ -19,7 +19,7 @@
 				<view class="tip">圆角</view>
 				<view class="opertion">
 					<view class="slider">
-						<slider :value="pageInfo.content[editIndex].detail.borderRadius" block-color = "#444546" activeColor="#444546" block-size="18" show-value min="0" max="50" step="1" @change = "setSlider"/>
+						<slider :value="pageInfo.content[editIndex].detail.borderRadius" block-color = "#444546" activeColor="#444546" block-size="18" show-value min="0" max="50" step="1" @change = "setSlider($event,'borderRadius')"/>
 						<text>px</text>								
 					</view>
 				</view> 
@@ -42,7 +42,7 @@
 				<view class="tip">大小</view>
 				<view class="opertion">
 					<view class="slider">
-						<slider :value = "pageInfo.content[editIndex].detail.fontSize" block-color = "#444546" activeColor="#444546" block-size="18" show-value min="12" max="60" step="1" @change = "setSlider"/>
+						<slider :value = "pageInfo.content[editIndex].detail.fontSize" block-color = "#444546" activeColor="#444546" block-size="18" show-value min="12" max="60" step="1" @change = "setSlider($event,'fontSize')"/>
 						<text>px</text>								
 					</view>
 				</view> 
@@ -132,9 +132,9 @@
 				console.log(c)
 				this.updateAttrValue({key:'color',value:c})
 			},
-			setSlider(ev){
+			setSlider(ev,key){
 				const {value} = ev.detail
-				this.updateAttrValue({key:'fontSize',value})	
+				this.updateAttrValue({key,value})	
 			},
 			bindPickerChange: function(e) {
 				const {value} = e.target

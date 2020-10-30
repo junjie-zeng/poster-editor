@@ -4,4 +4,5 @@ export default{
 	title:'hello word',
 	pageInfo:pageInfo,
 	editIndex:-1,
+	posterUrl:''
 }

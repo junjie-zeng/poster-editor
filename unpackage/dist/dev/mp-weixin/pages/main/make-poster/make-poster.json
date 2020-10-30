@@ -3,6 +3,7 @@
   "usingComponents": {
     "uni-drawer": "/components/uni-drawer/uni-drawer",
     "uni-popup": "/components/uni-popup/uni-popup",
+    "poster": "/components/poster/poster",
     "drag": "/pages/main/drag/drag",
     "page-popup": "/pages/main/page-popup/page-popup",
     "add-content-panel": "/pages/main/add-content-panel/add-content-panel",

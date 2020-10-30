@@ -252,9 +252,9 @@ var _vuex = __webpack_require__(/*! vuex */ 12);function _interopRequireDefault(
       console.log(c);
       this.updateAttrValue({ key: 'color', value: c });
     },
-    setSlider: function setSlider(ev) {var
+    setSlider: function setSlider(ev, key) {var
       value = ev.detail.value;
-      this.updateAttrValue({ key: 'fontSize', value: value });
+      this.updateAttrValue({ key: key, value: value });
     },
     bindPickerChange: function bindPickerChange(e) {var
       value = e.target.value;

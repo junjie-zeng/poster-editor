@@ -31,6 +31,8 @@
 		<uni-popup ref="create-poster-popup" type="center">
 			<create-poster-popup :pageInfo = "pageInfo"></create-poster-popup>
 		</uni-popup>
+		<!-- poster -->
+		<poster ref = "poster" :pageInfo = "pageInfo" ></poster>
 	</view>
 </template>
 
@@ -43,8 +45,9 @@
 	import editContentPanel from '../edit-content-panel/edit-content-panel.vue'
 	import pictureLibrarPopup from '../picture-library-popup/picture-library-popup.vue'
 	import createPosterPopup from '../create-poster-popup/create-poster-popup.vue'
+	import poster from '../../../components/poster/poster.vue'
 	import EV from '../../../static/lib/js/ev.js'
-	import { mapState } from 'vuex'
+	import { mapState,mapActions } from 'vuex'
 	export default { 
 		data() {
 			return {
@@ -66,8 +69,11 @@
 				const {key,status} = res
 				this.$refs[key][status]()
 			})
+			
+			
 		},
 		methods: {
+			...mapActions(['setPosterUrl']),
 			// open
 			open(e){
 				this.$refs[e].open()
@@ -88,8 +94,15 @@
 			},
 			// 创建海报
 			createPoster(){
-				console.log(this.pageInfo)
-				this.open('create-poster-popup')
+				// console.log(this.$refs.poster)
+				// this.open('create-poster-popup')
+				this.$refs.poster.createPoster((res)=>{
+					console.log(res)
+					this.setPosterUrl(res.tempFilePath)
+					this.open('create-poster-popup')
+				})
+				
+				
 			}
 		},
 		beforeDestroy(){
@@ -104,7 +117,8 @@
 			addContentPanel,
 			editContentPanel,
 			pictureLibrarPopup,
-			createPosterPopup
+			createPosterPopup,
+			poster
 		}
 	}
 </script>

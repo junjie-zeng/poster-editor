@@ -7,30 +7,16 @@
 			</view>
 			<view class="library-box">
 				<scroll-view style="height: 950rpx;" scroll-y="true">
-					<view class="item active" scroll-y="true" >
-						<image src="../../../static/image/4.png" mode=""></image>
+					<!-- active -->
+					<view class="item " v-for="(item,index) in images" :class="[(item == currentImageUrl ? 'active':'')]"  @click="selectImage(item)" :key = "index">
+						<image :src="item" mode=""></image>
 					</view>
-					<view class="item">
-						<image src="../../../static/image/2.png" mode=""></image>
-					</view>
-					<view class="item">
-						<image src="../../../static/image/3.png" mode=""></image>
-					</view>
-					<view class="item">
-						<image src="../../../static/image/1.png" mode=""></image>
-					</view>
-					<view class="item">
-						<image src="../../../static/image/1.png" mode=""></image>
-					</view>
-					<view class="item">
-						<image src="../../../static/image/1.png" mode=""></image>
-					</view>
+					
 				</scroll-view>
 			</view>
 			<view class="library-btn">
 				<button type="default" class="upload">上传图片</button>
-				<button type="default" class="_ok">确认</button>
-				<!-- <button type="default" class="cancel">取消</button> -->
+				<button type="default" class="_ok" @click="ok">确认</button>
 			</view>
 		</view>
 	</view>
@@ -38,15 +24,46 @@
 
 <script>
 	import broadcast from '../../../common/mixins/broadcast.js'
+	import { mapState,mapActions } from 'vuex'
 	export default {
 		mixins:[broadcast],
 		data() {
 			return {
-				
+				images:[
+					'../../../static/image/1.png',
+					'../../../static/image/2.png',
+					'../../../static/image/3.png',
+					'../../../static/image/4.png',
+					'../../../static/image/5.png',
+					'../../../static/image/6.png',
+				],
+				currentImageUrl:''
 			}
 		},
+		computed:{
+			...mapState(['pageInfo','editIndex'])
+		},
+		mounted() {
+			this.currentImageUrl =	this.pageInfo.content[this.editIndex] &&  this.pageInfo.content[this.editIndex].detail.url
+			console.log(this.currentImageUrl)
+		},
 		methods: {
-			
+			...mapActions(['updateAttrValue']),
+			ok(){
+				if(!this.currentImageUrl){
+					uni.showToast({
+						title:'请选择图片',
+						duration:1000
+					})
+				}
+				this.updateAttrValue({key:'url',value:this.currentImageUrl})
+				this.close('Popup','picture-library-popup','close')
+			},
+			selectImage(url){
+				console.log(url)
+				this.currentImageUrl = url
+			},
+		
 		}
 	}
 </script>
