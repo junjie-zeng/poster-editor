@@ -18,7 +18,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "",
-	"appid": "touristappid",
+	"appid": "wxa1f2677580739766",
 	"projectname": "poster-editor",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
@@ -48,8 +48,15 @@
 			"list": [
 				{
 					"id": -1,
-					"name": "pages/main/make-poster/make-poster",
-					"pathName": "pages/main/make-poster/make-poster",
+					"name": "pages/edit-poster/edit-poster",
+					"pathName": "pages/edit-poster/edit-poster",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/spread/spread",
+					"pathName": "pages/index/spread/spread",
 					"scene": null
 				}
 			]

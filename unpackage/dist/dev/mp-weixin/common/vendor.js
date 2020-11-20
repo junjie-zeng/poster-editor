@@ -2703,7 +2703,25 @@ var index_esm = {
 
 /***/ }),
 
-/***/ 121:
+/***/ 13:
+/*!****************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/store/state.js ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+var _data = _interopRequireDefault(__webpack_require__(/*! @/static/lib/js/data.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
+{
+  title: 'hello word',
+  pageInfo: _data.default,
+  editIndex: -1,
+  posterUrl: '' };exports.default = _default;
+
+/***/ }),
+
+/***/ 135:
 /*!*******************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/components/uni-popup/popup.js ***!
   \*******************************************************************************************/
@@ -2711,7 +2729,7 @@ var index_esm = {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 122));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 136));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 // 定义 type 类型:弹出类型：top/bottom/center
 var config = {
   // 顶部弹出
@@ -2738,7 +2756,7 @@ var config = {
 
 /***/ }),
 
-/***/ 122:
+/***/ 136:
 /*!*********************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/components/uni-popup/message.js ***!
   \*********************************************************************************************/
@@ -2766,24 +2784,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
         this.childrenMsg.close();
       }
     } } };exports.default = _default;
-
-/***/ }),
-
-/***/ 13:
-/*!****************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/store/state.js ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
-var _data = _interopRequireDefault(__webpack_require__(/*! @/static/lib/js/data.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
-{
-  title: 'hello word',
-  pageInfo: _data.default,
-  editIndex: -1,
-  posterUrl: '' };exports.default = _default;
 
 /***/ }),
 
@@ -2927,6 +2927,87 @@ _mutationTypes.UPDATE_ATTR_VALUE, function (state, _ref4) {var key = _ref4.key,v
 _mutationTypes.UPDATE_POSTER, function (state, url) {
   state.posterUrl = url;
 }), _ADD_CONTENT$UPDATE_P);exports.default = _default;
+
+/***/ }),
+
+/***/ 176:
+/*!************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/common/mixins/modal.js ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+var _ev = _interopRequireDefault(__webpack_require__(/*! @/common/tools/ev.js */ 177));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
+{
+  data: function data() {
+    return {};
+
+
+  },
+  mounted: function mounted() {var _this = this;
+    _ev.default.$on('popup', function (_ref) {var e = _ref.e,type = _ref.type;
+      _this.modal(e, type);
+    });
+  },
+  methods: {
+    modal: function modal(e, type) {
+      this.$refs[e] && this.$refs[e][type]();
+    },
+    $modal: function $modal(e, type) {
+      console.log("$modal ...");
+      _ev.default.$emit('popup', { e: e, type: type });
+    } },
+
+  destroyed: function destroyed() {
+    // EV.$off('popup')
+    // console.log("destroyed ...")
+  } };exports.default = _default;
+
+/***/ }),
+
+/***/ 177:
+/*!********************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/common/tools/ev.js ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
+
+
+
+new _vue.default();exports.default = _default;
+
+/***/ }),
+
+/***/ 18:
+/*!*************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/static/css/iconfont.css ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+    if(false) { var cssReload; }
+  
+
+/***/ }),
+
+/***/ 19:
+/*!***********************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/static/css/index.less ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+    if(false) { var cssReload; }
+  
 
 /***/ }),
 
@@ -9005,18 +9086,29 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 38:
+/***/ 4:
+/*!************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/pages.json ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ 52:
 /*!*********************************************************************************************!*\
   !*** ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator/index.js ***!
   \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 39);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 53);
 
 /***/ }),
 
-/***/ 39:
+/***/ 53:
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -9047,7 +9139,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 40);
+module.exports = __webpack_require__(/*! ./runtime */ 54);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -9064,18 +9156,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 4:
-/*!************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/pages.json ***!
-  \************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-
-/***/ 40:
+/***/ 54:
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -9807,7 +9888,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 54:
+/***/ 68:
 /*!****************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/common/mixins/broadcast.js ***!
   \****************************************************************************************/
@@ -9819,7 +9900,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
-var _ev = _interopRequireDefault(__webpack_require__(/*! @/static/lib/js/ev.js */ 55));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
+var _ev = _interopRequireDefault(__webpack_require__(/*! @/static/lib/js/ev.js */ 69));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 {
   data: function data() {
     return {};
@@ -9843,7 +9924,7 @@ var _ev = _interopRequireDefault(__webpack_require__(/*! @/static/lib/js/ev.js *
 
 /***/ }),
 
-/***/ 55:
+/***/ 69:
 /*!*********************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/static/lib/js/ev.js ***!
   \*********************************************************************************/
@@ -9857,7 +9938,7 @@ new _vue.default();exports.default = _default;
 
 /***/ }),
 
-/***/ 56:
+/***/ 70:
 /*!**************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/common/mixins/wxAsync.js ***!
   \**************************************************************************************/

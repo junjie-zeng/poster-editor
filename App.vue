@@ -14,9 +14,9 @@
 
 <style>
 	/*每个页面公共css */
-	@import url("static/css/index.css");
+	/* @import url("static/css/index.css"); */
 	
-	.modal{
+	/* .modal{
 		position: fixed;
 		top: 55px;
 		left: 10px;
@@ -26,5 +26,5 @@
 		// #ifdef MP-WEIXIN
 		top: 10px;
 		// #endif
-	}
+	} */
 </style>
