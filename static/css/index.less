@@ -83,8 +83,8 @@ view{ box-sizing:border-box; font-family:Arial, Microsoft YaHei; font-size:28rpx
 					align-items: center;
 					.zfx{
 						
-						width: 80rpx;
-						height: 80rpx;
+						width: 70rpx;
+						height: 70rpx;
 						border-radius: 24rpx;
 						background: #28cd96;
 						
@@ -96,6 +96,8 @@ view{ box-sizing:border-box; font-family:Arial, Microsoft YaHei; font-size:28rpx
 				&>.iconfont{
 					width: 100rpx;
 					text-align: right;
+					padding-right: 10rpx;
+					font-size: 42rpx;
 				}
 			}
 			
@@ -327,7 +329,217 @@ view{ box-sizing:border-box; font-family:Arial, Microsoft YaHei; font-size:28rpx
 	}
 }
 
+.ps-add-content-box{
+	display: flex;
+	flex-direction: column;
+	.content-th{
+		display: flex;
+		background: #f5f6f6;
+		height: 100rpx;
+		align-items: center;
+		.th-title{
+			flex: 1;
+			text-align: center;
+			margin-left: 50rpx;
+			
+		}
+		.icon-close{
+			width: 50rpx;
+			color: #4b64ff;
+			font-size: 42rpx;
+		}
+	}
+	.content-td{
+		flex: 1;
+		display: flex;
+		// flex-direction: column;
+		align-items: center;
+		padding: 15rpx;
+		width: 100%;
+		flex-wrap: wrap;
+		.td-item{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			height: 400rpx;
+			border-radius: 5px;
+			margin: 5px;
+			margin-top: 10rpx;
+			background: #5fd4ad;
+			.iconfont{
+				font-size: 100rpx;
+				color: #fff;
+			}
+			.text{
+				font-size: 40rpx;
+				color: #fff;
+			}
+		}
+	}
+}
 
+
+.ps-edit-content-box{
+	display: flex;
+	flex-direction: column;
+	.content-th{
+		display: flex;
+		background: #f5f6f6;
+		height: 100rpx;
+		align-items: center;
+		.th-title{
+			flex: 1;
+			text-align: center;
+			margin-left: 50rpx;
+			
+		}
+		.icon-close{
+			width: 50rpx;
+			color: #4b64ff;
+			font-size: 42rpx;
+		}
+	}
+	
+	.content-td{
+		padding: 10rpx;
+		.ps-edit-item{
+			// background: gray;
+			display: flex;
+			flex-direction: column;
+			padding: 10rpx;
+			margin-bottom: 20rpx;
+			.top{
+				// padding-left: 10rpx;
+				margin-bottom: 10rpx;
+			}
+			.bottom{
+				flex: 1;
+				width: 100%;
+				.colors{
+					display: flex;
+					justify-content: space-between;
+					flex-wrap: wrap;
+					width: 100%;
+					.color-item{
+						flex: 45%;
+						margin: 5px;
+						height: 80rpx;
+						background: blue;
+						border-radius: 2px;
+					}
+				}
+				.set-font-weight{
+					height: 80rpx;
+					line-height: 80rpx;
+					border: solid 2px #5fd4ad;
+					border-radius: 2px;
+					text-align: center;
+				}
+				
+				.set-image{
+					position: relative;
+					border-radius: 2px;
+					overflow: hidden;
+					image{
+						width: 100%;
+					}
+					
+					.set-image-btn{
+						display: flex;
+						position: absolute;
+						top: 10rpx;
+						right: 10rpx;
+						
+						&>view{
+							width: 70rpx ;
+							height: 70rpx;
+							text-align: center;
+							border-radius: 2px;
+							line-height: 70rpx;
+							font-size: 42rpx;
+							background: #ff0000;
+							color: white;
+						}
+						
+						&>view:nth-child(1){
+							margin-right: 10rpx;
+							background: #5fd4ad;
+						}
+					}
+				}
+			}
+			
+		}
+	}
+	
+}
+
+.ps-more-poster-box{
+	position: relative;
+	top: 90rpx;
+	padding: 10rpx;
+	background: #fefeff;
+	.ps-more-th{
+		background: #f9faff;
+		.search{
+			display: flex;
+			position: relative;
+			padding: 10rpx;
+			.search-input{
+				background: #fff;
+				width: 100%;
+				height: 60rpx;
+				border-radius: 12px;
+				padding-left: 20rpx;
+				line-height: 60rpx;
+				font-size: 26rpx;
+			}
+			&>.iconfont{
+				position: absolute;
+				right: 15px;
+				top:10px;
+				font-size: 42rpx;
+			}
+		}
+		
+		.tab{
+			display: flex;
+			margin-top: 20rpx;
+			justify-content: space-around;
+			&>view{
+				font-size: 32rpx;
+				padding:15rpx 10rpx;
+			}
+			.active{
+				border-bottom: solid 4px #4b64ff;
+			}
+		}
+	}
+	
+	.ps-more-td{
+		padding: 30rpx 30rpx;
+		background: #f4f5f6;
+		.ps-more-list{
+			display: flex;
+			width: 100%;
+			flex-wrap: wrap;
+			.ps-list-item{
+				flex: 45%;
+				padding: 5px;
+				
+				overflow: hidden;
+				image{
+					width: 100%;
+					border-radius: 12px;
+				}
+			}
+		}
+	}
+		
+	
+}
 
 /* #ifdef MP-WEIXIN */
 	.ps-header{
@@ -352,3 +564,6 @@ view{ box-sizing:border-box; font-family:Arial, Microsoft YaHei; font-size:28rpx
 		top: 130rpx;
 	}
 /* #endif */
+
+
+.uni-drawer--visible{z-index: 1 !important;}

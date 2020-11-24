@@ -20,7 +20,7 @@
 				<view class="ps-full-box">
 					<swiper class="swiper" >
 						<swiper-item>
-							<image src="../../../static/image/4.png" ></image>
+							<image src="../../../static/image/1.png" ></image>
 						</swiper-item>
 						<swiper-item>
 							<image src="../../../static/image/2.png" ></image>
@@ -30,15 +30,18 @@
 						</swiper-item>
 					</swiper>
 				</view>
-				<!-- <view class="ps-full-box">
+				<view class="ps-full-box">
 					<view class="ps-scroll">
 						<view class="scroll-left">
 							<view class="zfx"></view>
 							<view class="tip">青藏高原</view>
 						</view>
-						<view class="iconfont icon-arrow-right"></view>
+						<navigator url="/pages/poster/more-poster">
+							<view class="iconfont icon-arrow-right"></view>
+						</navigator>
+						
 					</view>
-				</view> -->
+				</view>
 			</view>
 			<view class="ps-inner-box ps-bg-light-06 pd-25">
 				<view class="ps-box-white">
@@ -51,8 +54,8 @@
 							<view class="ps-td">
 								<view class="poster-recommend">
 									<view class="poster-item">
-										<navigator url="/pages/edit-poster/edit-poster">
-											<image src="../../../static/image/1.png" ></image>
+										<navigator url="/pages/poster/edit-poster">
+											<image src="../../../static/image/1.jpg" ></image>
 											<view class="des">青藏高原</view>
 										</navigator>
 									</view>

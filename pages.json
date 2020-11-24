@@ -32,13 +32,18 @@
        
         
        
+       
     ],
 	"subPackages":[
 		{
-			"root":"pages/edit-poster",
+			"root":"pages/poster",
 			"pages":[
 				{
 				    "path" : "edit-poster",
+				    "style" : {}
+				},
+				{
+				    "path" : "more-poster",
 				    "style" : {}
 				}
 			]

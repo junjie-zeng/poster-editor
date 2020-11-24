@@ -9,7 +9,9 @@
 			</view>
 		</view>
 		<view class="ps-opertion-btn">
-			<view class="setting"  @click="modal('ps-setting-modal','open')">
+			
+			<!-- @click="modal('ps-setting-modal','open')" -->
+			<view class="setting"  @click="addContent">
 				<view class=""></view>
 				+
 			</view>
@@ -71,7 +73,7 @@
 						<text class="desc">添加</text>
 					</view>
 					<view class="left-item">
-						<view class="yuan">
+						<view class="yuan" @click="addContent">
 							<text class="iconfont icon-Daytimemode"></text>
 						</view>
 						<text class="desc">添加</text>
@@ -112,6 +114,89 @@
 				</view>
 			</view>
 		</uniPopup>
+		<uni-drawer ref="add-content-drawer" mode="left">
+			<view class="ps-add-content-box">
+				<view class="content-th">
+					<view class="th-title">添加元素</view>
+					<view class="iconfont icon-close" @click="drawer('add-content-drawer','close')"></view>
+				</view>
+				<view class="content-td">
+					<view class="td-item">
+						<view class="iconfont icon-Daytimemode"></view>
+						<view class="text">
+							文字
+						</view>
+					</view>
+					<view class="td-item">
+						<view class="iconfont icon-add"></view>
+						<view class="text">
+							图片
+						</view>
+					</view>
+				</view>
+			</view>
+		</uni-drawer>
+		<uni-drawer ref="edit-content-drawer" mode="right">
+			<view class="ps-edit-content-box">
+				<view class="content-th">
+					<view class="th-title">编辑元素</view>
+					<view class="iconfont icon-close" @click="drawer('add-content-drawer','close')"></view>
+				</view>
+				<view class="content-td">
+					<view class="ps-edit-item">
+						<view class="top">
+							颜色
+						</view>
+						<view class="bottom">
+							<view class="colors">
+								<view class="color-item" style="background: #ff1d20;"></view>
+								<view class="color-item" style="background: #ffaa00;"></view>
+								<view class="color-item" style="background: #ffff00;"></view>
+								<view class="color-item" style="background: #55ff00;"></view>
+								<view class="color-item" style="background: #0565ff;"></view>
+								<view class="color-item" style="background: #55ffff;"></view>
+								<view class="color-item" style="background: #8800ff;"></view>
+							</view>
+						</view>
+					</view>
+					<view class="ps-edit-item">
+						<view class="top">
+							大小
+						</view>
+						<view class="bottom">
+							  <slider value="60" show-value step="5" />
+						</view>
+					</view>
+					<view class="ps-edit-item">
+						<view class="top">
+							字体
+						</view>
+						<view class="bottom">
+							<view class="set-font-weight">
+								<picker @change="bindFontWeight" :value="fontWeightIndex" :range="fontWeightArray">
+									<view class="uni-input">{{fontWeightArray[fontWeightIndex]}}</view>
+								</picker>
+							</view>
+							
+						</view>
+					</view>
+					<view class="ps-edit-item">
+						<view class="top">
+							图片
+						</view>
+						<view class="bottom">
+							<view class="set-image">
+								<image src="@/static/image/1.jpg" mode="widthFix"></image>
+								<view class="set-image-btn">
+									<view class="iconfont icon-listing-content"></view>
+									<view class="iconfont icon-close"></view>
+								</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</uni-drawer>
 	</view>
 </template>
 
@@ -119,13 +204,16 @@
 	import broadcast from '@/common/mixins/broadcast.js'
 	import wxAsync from '@/common/mixins/wxAsync.js'
 	import modal from '@/common/mixins/modal.js'
+	import drawer from '@/common/mixins/drawer.js'
 	import {mapState, mapActions } from 'vuex'
+	
 	export default {
 		// props:['pageInfo'],
-		mixins:[broadcast,wxAsync,modal],
+		mixins:[broadcast,wxAsync,modal,drawer],
 		data() {
 			return {
-				
+				fontWeightIndex:0,
+				fontWeightArray:[1,2,3]
 			}
 		},
 		computed:{
@@ -141,8 +229,7 @@
 			...mapActions(['changeCoordinate','setEditIndex']),
 			editEle(index){
 				this.setEditIndex(index)
-				this.open('Drawer','edit-content-panel','open')
-				
+				this.drawer('edit-content-drawer','open')
 			},
 			updateRect(ev,index,type){
 				const {x,y,source} = ev.detail
@@ -154,11 +241,18 @@
 					})
 					this.changeCoordinate({index,x,y})
 				}
+			},
+			addContent(){
+				this.drawer('add-content-drawer','open')
+				this.modal('ps-setting-modal','close')
+			},
+			bindFontWeight(e){
+				  this.fontWeightIndex = e.target.value
 			}
 		}
 	}
 </script>
 
 <style>
-
+	
 </style>

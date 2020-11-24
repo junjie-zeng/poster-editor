@@ -4,12 +4,13 @@ import store from './store/index.js'
 import "static/css/iconfont.css"
 import "static/css/index.less"
 import uniPopup from '@/components/uni-popup/uni-popup.vue'
-
+import uniDrawer from "@/components/uni-drawer/uni-drawer.vue"
 
 Vue.config.productionTip = false
 Vue.prototype.$store = store
 App.mpType = 'app'
 Vue.component('uniPopup',uniPopup)
+Vue.component('uniDrawer',uniDrawer)
 
 
 const app = new Vue({
