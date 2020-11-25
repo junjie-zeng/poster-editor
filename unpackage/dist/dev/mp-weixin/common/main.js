@@ -32,6 +32,10 @@ createApp(app).$mount();
                          	目的
                          		1. 体验跨平台兼容性
                          		2. 巩固vuex
+                         		3. canvas画图
+                         		4. 复用组件
+                         		5. 抽取公共逻辑
+                         		6. ...
                          */
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createApp"]))
 
