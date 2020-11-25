@@ -2721,7 +2721,7 @@ var _data = _interopRequireDefault(__webpack_require__(/*! @/static/lib/js/data.
 
 /***/ }),
 
-/***/ 135:
+/***/ 136:
 /*!*******************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/components/uni-popup/popup.js ***!
   \*******************************************************************************************/
@@ -2729,7 +2729,7 @@ var _data = _interopRequireDefault(__webpack_require__(/*! @/static/lib/js/data.
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 136));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _message = _interopRequireDefault(__webpack_require__(/*! ./message.js */ 137));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 // 定义 type 类型:弹出类型：top/bottom/center
 var config = {
   // 顶部弹出
@@ -2756,7 +2756,7 @@ var config = {
 
 /***/ }),
 
-/***/ 136:
+/***/ 137:
 /*!*********************************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/components/uni-popup/message.js ***!
   \*********************************************************************************************/
@@ -2927,61 +2927,6 @@ _mutationTypes.UPDATE_ATTR_VALUE, function (state, _ref4) {var key = _ref4.key,v
 _mutationTypes.UPDATE_POSTER, function (state, url) {
   state.posterUrl = url;
 }), _ADD_CONTENT$UPDATE_P);exports.default = _default;
-
-/***/ }),
-
-/***/ 176:
-/*!************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/common/mixins/modal.js ***!
-  \************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
-
-
-var _ev = _interopRequireDefault(__webpack_require__(/*! @/common/tools/ev.js */ 177));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
-{
-  data: function data() {
-    return {};
-
-
-  },
-  mounted: function mounted() {var _this = this;
-    _ev.default.$on('popup', function (_ref) {var e = _ref.e,type = _ref.type;
-      _this.modal(e, type);
-    });
-  },
-  methods: {
-    modal: function modal(e, type) {
-      this.$refs[e] && this.$refs[e][type]();
-    },
-    $modal: function $modal(e, type) {
-      console.log("$modal ...");
-      _ev.default.$emit('popup', { e: e, type: type });
-    } },
-
-  destroyed: function destroyed() {
-    // EV.$off('popup')
-    // console.log("destroyed ...")
-  } };exports.default = _default;
-
-/***/ }),
-
-/***/ 177:
-/*!********************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/common/tools/ev.js ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
-
-
-
-new _vue.default();exports.default = _default;
 
 /***/ }),
 
@@ -9098,17 +9043,190 @@ module.exports = g;
 /***/ }),
 
 /***/ 52:
+/*!****************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/common/mixins/broadcast.js ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+
+var _ev = _interopRequireDefault(__webpack_require__(/*! @/static/lib/js/ev.js */ 53));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
+{
+  data: function data() {
+    return {};
+
+
+  },
+  onLoad: function onLoad(options) {
+
+  },
+  methods: {
+    // eg:
+    // this.open('Drawer','add-content-panel','open')
+    // this.close('Popup','page-popup','close')
+
+    close: function close(target, key, status) {
+      _ev.default.$emit(target, { key: key, status: status });
+    },
+    open: function open(target, key, status) {
+      _ev.default.$emit(target, { key: key, status: status });
+    } } };exports.default = _default;
+
+/***/ }),
+
+/***/ 53:
+/*!*********************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/static/lib/js/ev.js ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
+new _vue.default();exports.default = _default;
+
+/***/ }),
+
+/***/ 54:
+/*!**************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/common/mixins/wxAsync.js ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
+
+
+
+
+
+{
+  methods: {
+    // 获取元素宽高等属性
+    getClientRect: function getClientRect(el) {
+      return new Promise(function (resolve) {
+        uni.createSelectorQuery().selectAll(el).boundingClientRect(function (rect) {
+          // console.log(rect)
+          resolve(rect[0]);
+        }).exec();
+      });
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 55:
+/*!************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/common/mixins/modal.js ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+var _ev = _interopRequireDefault(__webpack_require__(/*! @/common/tools/ev.js */ 56));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
+{
+  data: function data() {
+    return {};
+
+
+  },
+  mounted: function mounted() {var _this = this;
+    _ev.default.$on('popup', function (_ref) {var e = _ref.e,type = _ref.type;
+      _this.modal(e, type);
+    });
+  },
+  methods: {
+    modal: function modal(e, type) {
+      this.$refs[e] && this.$refs[e][type]();
+    },
+    $modal: function $modal(e, type) {
+      console.log("$modal ...");
+      _ev.default.$emit('popup', { e: e, type: type });
+    } },
+
+  destroyed: function destroyed() {
+    // EV.$off('popup')
+    // console.log("destroyed ...")
+  } };exports.default = _default;
+
+/***/ }),
+
+/***/ 56:
+/*!********************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/common/tools/ev.js ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
+
+
+
+new _vue.default();exports.default = _default;
+
+/***/ }),
+
+/***/ 57:
+/*!*************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/common/mixins/drawer.js ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+var _ev = _interopRequireDefault(__webpack_require__(/*! @/common/tools/ev.js */ 56));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
+{
+  data: function data() {
+    return {};
+
+
+  },
+  mounted: function mounted() {var _this = this;
+    _ev.default.$on('drawer', function (_ref) {var e = _ref.e,type = _ref.type;
+      _this.drawer(e, type);
+    });
+  },
+  methods: {
+    drawer: function drawer(e, type) {
+      this.$refs[e] && this.$refs[e][type]();
+    },
+    $drawer: function $drawer(e, type) {
+      console.log("$drawer ...");
+      _ev.default.$emit('drawer', { e: e, type: type });
+    } },
+
+  destroyed: function destroyed() {
+    // EV.$off('drawer')
+    // console.log("destroyed ...")
+  } };exports.default = _default;
+
+/***/ }),
+
+/***/ 70:
 /*!*********************************************************************************************!*\
   !*** ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator/index.js ***!
   \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 53);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 71);
 
 /***/ }),
 
-/***/ 53:
+/***/ 71:
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -9139,7 +9257,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 54);
+module.exports = __webpack_require__(/*! ./runtime */ 72);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -9156,7 +9274,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 54:
+/***/ 72:
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -9885,85 +10003,6 @@ if (hadRuntime) {
   })() || Function("return this")()
 );
 
-
-/***/ }),
-
-/***/ 68:
-/*!****************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/common/mixins/broadcast.js ***!
-  \****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
-
-
-
-var _ev = _interopRequireDefault(__webpack_require__(/*! @/static/lib/js/ev.js */ 69));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
-{
-  data: function data() {
-    return {};
-
-
-  },
-  onLoad: function onLoad(options) {
-
-  },
-  methods: {
-    // eg:
-    // this.open('Drawer','add-content-panel','open')
-    // this.close('Popup','page-popup','close')
-
-    close: function close(target, key, status) {
-      _ev.default.$emit(target, { key: key, status: status });
-    },
-    open: function open(target, key, status) {
-      _ev.default.$emit(target, { key: key, status: status });
-    } } };exports.default = _default;
-
-/***/ }),
-
-/***/ 69:
-/*!*********************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/static/lib/js/ev.js ***!
-  \*********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
-new _vue.default();exports.default = _default;
-
-/***/ }),
-
-/***/ 70:
-/*!**************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/hub/多端开发/poster-editor/common/mixins/wxAsync.js ***!
-  \**************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
-
-
-
-
-
-{
-  methods: {
-    // 获取元素宽高等属性
-    getClientRect: function getClientRect(el) {
-      return new Promise(function (resolve) {
-        uni.createSelectorQuery().selectAll(el).boundingClientRect(function (rect) {
-          // console.log(rect)
-          resolve(rect[0]);
-        }).exec();
-      });
-    } } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
 

@@ -10,8 +10,8 @@
 		</view>
 		<view class="ps-opertion-btn">
 			
-			<!-- @click="modal('ps-setting-modal','open')" -->
-			<view class="setting"  @click="addContent">
+			<!-- @click="modal('ps-setting-modal','open')" @click="addContent" -->
+			<view class="setting" @click="modal('ps-setting-modal','open')" >
 				<view class=""></view>
 				+
 			</view>

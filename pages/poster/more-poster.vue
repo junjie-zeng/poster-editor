@@ -15,19 +15,55 @@
 					<view class="iconfont icon-service"></view>
 				</view>
 				<view class="tab">
-					<view class="tab-item active">全部海报</view>
-					<view class="tab-item">系统海报</view>
-					<view class="tab-item">我的海报</view>
+					<view class="tab-item active">
+						<text>全部海报</text>
+						<text></text>
+					</view>
+					<view class="tab-item">
+						<text>系统海报</text>
+						<text></text>
+					</view>
+					<view class="tab-item">
+						<text>我的海报</text>
+						<text></text>
+					</view>
 				</view>
 			</view>
 			<view class="ps-more-td">
 				<view class="ps-more-list">
 					<view class="ps-list-item">
-						<image src="../../static/image/1.jpg" mode=""></image>
+						<view class="ps-cover">
+							<image src="../../static/image/1.jpg" mode=""></image>
+							<view class="poster-tips">
+								<text class="iconfont icon-all"></text>
+								<text>使用</text>
+							</view>
+						</view>
+						<text class="item-desc">喜马拉雅</text>
 					</view>
 					<view class="ps-list-item">
-						<image src="../../static/image/1.png" mode=""></image>
+						<view class="ps-cover">
+							<image src="../../static/image/4.jpg" mode=""></image>
+							<view class="poster-tips">
+								<text class="iconfont icon-all"></text>
+								<text>使用</text>
+							</view>
+						</view>
+						<text class="item-desc">喜马拉雅</text>
 					</view>
+					
+					<view class="ps-list-item">
+						<view class="ps-cover">
+							<image src="../../static/image/3.jpg" mode=""></image>
+							<view class="poster-tips">
+								<text class="iconfont icon-all"></text>
+								<text>使用</text>
+							</view>
+						</view>
+						<text class="item-desc">喜马拉雅</text>
+					</view>
+					
+					
 				</view>
 			</view>
 		</view>

@@ -39,7 +39,6 @@
 						<navigator url="/pages/poster/more-poster">
 							<view class="iconfont icon-arrow-right"></view>
 						</navigator>
-						
 					</view>
 				</view>
 			</view>
@@ -55,16 +54,35 @@
 								<view class="poster-recommend">
 									<view class="poster-item">
 										<navigator url="/pages/poster/edit-poster">
-											<image src="../../../static/image/1.jpg" ></image>
+											<view class="ps-cover">
+												<image src="../../../static/image/1.jpg" ></image>
+												<view class="poster-tips">
+													<text class="iconfont icon-all"></text>
+													<text>使用</text>
+												</view>
+											</view>
 											<view class="des">青藏高原</view>
 										</navigator>
+										
 									</view>
 									<view class="poster-item">
-										<image src="../../../static/image/2.png" ></image>
+										<view class="ps-cover">
+											<image src="../../../static/image/4.jpg" ></image>
+											<view class="poster-tips">
+												<text class="iconfont icon-all"></text>
+												<text>使用</text>
+											</view>
+										</view>
 										<view class="des">四川盆地</view>
 									</view>
 									<view class="poster-item">
-										<image src="../../../static/image/3.png" ></image>
+										<view class="ps-cover">
+											<image src="../../../static/image/3.jpg" ></image>
+											<view class="poster-tips">
+												<text class="iconfont icon-all"></text>
+												<text>使用</text>
+											</view>
+										</view>
 										<view class="des">刚果高原</view>
 									</view>
 									
