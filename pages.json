@@ -7,76 +7,19 @@
 		,{
 		    "path" : "pages/index/works/works",
 		    "style" : {}
-		},
-		
-		
-		{
-			"path": "pages/tabBar/main/main",
-			"style": {
-			}
 		}
-	    ,{
-            "path" : "pages/tabBar/works/works",
-            "style" : {}
-        }
-        
-        
-    
-        
-        
-        
-        
-        
-        
-        
-       
-        
-       
-       
     ],
 	"subPackages":[
 		{
 			"root":"pages/poster",
 			"pages":[
 				{
-				    "path" : "edit-poster",
+				    "path" : "edit-poster/index",
 				    "style" : {}
 				},
 				{
-				    "path" : "more-poster",
+				    "path" : "more-poster/index",
 				    "style" : {}
-				}
-			]
-		},
-		{
-			"root":"pages/main",
-			"pages":[
-				{
-				    "path" : "make-poster-bak/make-poster-bak",
-				    "style" : {}
-				},{
-					"path" : "make-poster/make-poster",
-					"style" : {
-						"navigationBarTitleText": "制作海报"
-					}
-				},{
-					"path" : "drag/drag",
-					"style" : {}
-				},{
-					"path" : "page-popup/page-popup",
-					"style" : {}
-				},{
-					"path" : "add-content-panel/add-content-panel",
-					"style" : {}
-				},{
-					"path" : "edit-content-panel/edit-content-panel",
-					"style" : {}
-				},{
-					"path" : "picture-library-popup/picture-library-popup",
-					"style" : {}
-				},{
-					"path" : "create-poster-popup/create-poster-popup",
-					"style" : {}
 				}
 			]
 		},
