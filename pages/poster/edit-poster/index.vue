@@ -1,0 +1,75 @@
+<template>
+	<view>
+		<appHeader option ="back" title = "海报海报"></appHeader>
+		
+		<view class="ps-opertion-btn">
+			<!-- @click="modal('ps-setting-modal','open')" @click="addContent" -->
+			<view class="setting" @click="operation" >
+				<view class=""></view>
+				+
+			</view>
+		</view>
+		
+		<!-- drag -->
+		<drag></drag>
+		<!-- uniPopup -->
+		<uniPopup ref = "ps-setting-modal">
+			<setting-modal></setting-modal>
+		</uniPopup>
+		<uniPopup ref = "ps-create-poster-modal">
+			<create-poster-modal></create-poster-modal>
+		</uniPopup>
+		<!-- drawer -->
+		<uni-drawer ref="add-content-drawer" mode="left">
+			<add-content-drawer></add-content-drawer>
+		</uni-drawer>
+		<uni-drawer ref="edit-content-drawer" mode="right">
+			<edit-content-drawer></edit-content-drawer>
+		</uni-drawer>
+	</view>
+</template>
+
+<script>
+	import {mapState, mapActions } from 'vuex'
+	import broadcast from '@/common/mixins/broadcast.js'
+	import wxAsync from '@/common/mixins/wxAsync.js'
+	import modal from '@/common/mixins/modal.js'
+	import drawer from '@/common/mixins/drawer.js'
+	import drag from './children/drag.vue'
+	import settingModal from './children/setting-modal.vue'
+	import createPosterModal from './children/create-poster-modal.vue'
+	import addContentDrawer from './children/add-content-drawer.vue'
+	import editContentDrawer from './children/edit-content-drawer.vue'
+	export default {
+		// props:['pageInfo'],
+		mixins:[broadcast,wxAsync,modal,drawer],
+		data() {
+			return {
+				
+			}
+		},
+		computed:{
+			...mapState(['pageInfo'])
+		},
+		mounted(){
+			
+			
+		},
+		methods: {
+			operation(){
+				this.modal('ps-setting-modal','open')
+			}
+		},
+		components:{
+			drag,
+			settingModal,
+			createPosterModal,
+			addContentDrawer,
+			editContentDrawer
+		}
+	}
+</script>
+
+<style>
+	
+</style>
