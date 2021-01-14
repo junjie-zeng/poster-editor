@@ -2800,13 +2800,12 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 var pageInfo = {
   id: 0,
-  detail: { background: 'white', backgroundImage: '../../../static/image/5.png', width: 375, height: 240 },
+  detail: { background: 'pink', backgroundImage: '../../../static/image/2.png', width: 375, height: 240 },
   content: [
-
   {
     id: 2,
     type: 'img',
-    detail: { x: 98, y: 146, width: 100, height: 100, url: '../../../static/image/nike.jpg', borderRadius: 10 }
+    detail: { x: 98, y: 146, width: 100, height: 100, url: '../../../static/image/nike.jpg', borderRadius: 10, bgColor: 'pink' }
     // borderRadius最大值50
   },
   {
@@ -2855,10 +2854,13 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   setEditIndex: function setEditIndex(_ref5, index) {var commit = _ref5.commit,state = _ref5.state;
     commit(_mutationTypes.EDIT_INDEX, index);
   },
-  updateAttrValue: function updateAttrValue(_ref6, _ref7) {var commit = _ref6.commit;var key = _ref7.key,value = _ref7.value;
-    commit(_mutationTypes.UPDATE_ATTR_VALUE, { key: key, value: value });
+  updateContentDetail: function updateContentDetail(_ref6, _ref7) {var commit = _ref6.commit;var key = _ref7.key,value = _ref7.value;
+    commit(_mutationTypes.UPDATE_CONTENT_DETAIL, { key: key, value: value });
   },
-  setPosterUrl: function setPosterUrl(_ref8, url) {var commit = _ref8.commit;
+  updateContent: function updateContent(_ref8, _ref9) {var commit = _ref8.commit;var key = _ref9.key,value = _ref9.value;
+    commit(_mutationTypes.UPDATE_CONTENT, { key: key, value: value });
+  },
+  setPosterUrl: function setPosterUrl(_ref10, url) {var commit = _ref10.commit;
     commit(_mutationTypes.UPDATE_POSTER, url);
   } };exports.default = _default;
 
@@ -2872,7 +2874,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.UPDATE_POSTER = exports.UPDATE_ATTR_VALUE = exports.EDIT_INDEX = exports.CHANGE_COORDINATE = exports.ADD_CONTENT = exports.UPDATE_PAGE_INFO = void 0;
+Object.defineProperty(exports, "__esModule", { value: true });exports.UPDATE_POSTER = exports.UPDATE_CONTENT = exports.UPDATE_CONTENT_DETAIL = exports.EDIT_INDEX = exports.CHANGE_COORDINATE = exports.ADD_CONTENT = exports.UPDATE_PAGE_INFO = void 0;
 
 // update
 var UPDATE_PAGE_INFO = 'UPDATE_PAGE_INFO';
@@ -2885,7 +2887,8 @@ exports.ADD_CONTENT = ADD_CONTENT;var CHANGE_COORDINATE = 'CHANGE_COORDINATE';ex
 
 var EDIT_INDEX = 'EDIT_INDEX';exports.EDIT_INDEX = EDIT_INDEX;
 
-var UPDATE_ATTR_VALUE = 'UPDATE_ATTR_VALUE';exports.UPDATE_ATTR_VALUE = UPDATE_ATTR_VALUE;
+var UPDATE_CONTENT_DETAIL = 'UPDATE_CONTENT_DETAIL';exports.UPDATE_CONTENT_DETAIL = UPDATE_CONTENT_DETAIL;
+var UPDATE_CONTENT = 'UPDATE_CONTENT';exports.UPDATE_CONTENT = UPDATE_CONTENT;
 
 var UPDATE_POSTER = 'UPDATE_POSTER';exports.UPDATE_POSTER = UPDATE_POSTER;
 
@@ -2920,9 +2923,12 @@ _mutationTypes.EDIT_INDEX, function (state, index) {
   state.editIndex = index;
 }), _defineProperty(_ADD_CONTENT$UPDATE_P,
 
-_mutationTypes.UPDATE_ATTR_VALUE, function (state, _ref4) {var key = _ref4.key,value = _ref4.value;
+_mutationTypes.UPDATE_CONTENT_DETAIL, function (state, _ref4) {var key = _ref4.key,value = _ref4.value;
   var index = state.editIndex;
   state.pageInfo.content[index].detail[key] = value;
+}), _defineProperty(_ADD_CONTENT$UPDATE_P,
+_mutationTypes.UPDATE_CONTENT, function (state, _ref5) {var key = _ref5.key,value = _ref5.value;
+  state.pageInfo.detail[key] = value;
 }), _defineProperty(_ADD_CONTENT$UPDATE_P,
 _mutationTypes.UPDATE_POSTER, function (state, url) {
   state.posterUrl = url;

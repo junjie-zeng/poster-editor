@@ -1,1 +1,1 @@
-<view></view>
+<view><app-header vue-id="4f1b2517-1" option="personal" title="我的作品" bind:__l="__l"></app-header><view class="ps-more-poster-box">作品制作中 ......</view></view>

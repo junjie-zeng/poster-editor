@@ -31,13 +31,28 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
+			"current": -1,
+			"list": []
+		},
+		"gamePlugin": {
 			"current": -1,
 			"list": []
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": []
+			"list": [
+				{
+					"id": -1,
+					"name": "pages/poster/edit-poster/index",
+					"pathName": "pages/poster/edit-poster/index",
+					"scene": null
+				}
+			]
 		}
 	}
 }

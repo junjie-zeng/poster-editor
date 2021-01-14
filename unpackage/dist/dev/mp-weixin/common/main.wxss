@@ -566,12 +566,13 @@ view {
   text-align: center;
 }
 .ps-create-poster .ps-create-box .poster-body {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-          flex: 1;
+  max-height: 800rpx;
+  min-height: 200rpx;
+  overflow-y: scroll;
 }
 .ps-create-poster .ps-create-box .poster-body > image {
   width: 100%;
+  height: 100%;
 }
 .ps-create-poster .ps-create-box .poster-footer {
   display: -webkit-box;
@@ -828,7 +829,7 @@ view {
   -webkit-flex: 45%;
           flex: 45%;
   margin: 5px;
-  height: 80rpx;
+  height: 70rpx;
   background: blue;
   border-radius: 2px;
 }

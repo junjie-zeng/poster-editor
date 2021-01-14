@@ -1,29 +1,14 @@
 {
   "pages": [
     "pages/index/spread/spread",
-    "pages/index/works/works",
-    "pages/tabBar/main/main",
-    "pages/tabBar/works/works"
+    "pages/index/works/works"
   ],
   "subPackages": [
     {
       "root": "pages/poster",
       "pages": [
-        "edit-poster",
-        "more-poster"
-      ]
-    },
-    {
-      "root": "pages/main",
-      "pages": [
-        "make-poster-bak/make-poster-bak",
-        "make-poster/make-poster",
-        "drag/drag",
-        "page-popup/page-popup",
-        "add-content-panel/add-content-panel",
-        "edit-content-panel/edit-content-panel",
-        "picture-library-popup/picture-library-popup",
-        "create-poster-popup/create-poster-popup"
+        "edit-poster/index",
+        "more-poster/index"
       ]
     }
   ],
@@ -48,7 +33,7 @@
   },
   "usingComponents": {
     "uni-popup": "/components/uni-popup/uni-popup",
-    "uni-drawer": "/components/uni-drawer/uni-drawer"
-  },
-  "sitemapLocation": "sitemap70.json"
+    "uni-drawer": "/components/uni-drawer/uni-drawer",
+    "app-header": "/components/app-header/app-header"
+  }
 }

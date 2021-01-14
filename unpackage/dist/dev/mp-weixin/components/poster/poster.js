@@ -229,7 +229,7 @@ var _default =
           } },
         _this);
 
-      }, 300);
+      }, 500);
       // context.draw(false,wx.canvasToTempFilePath({
       // 	  canvasId: 'poster',
       // 	  success: function (res) {
