@@ -3,13 +3,12 @@
 
 let pageInfo = {
 	id:0,
-	detail:{background:'white',backgroundImage:'../../../static/image/5.png',width:375,height:240},
+	detail:{background:'pink',backgroundImage:'../../../static/image/2.png',width:375,height:240},
 	content:[
-		
 		{
 			id:2,
 			type:'img',
-			detail:{x:98,y:146,width:100,height:100,url:'../../../static/image/nike.jpg',borderRadius:10},
+			detail:{x:98,y:146,width:100,height:100,url:'../../../static/image/nike.jpg',borderRadius:10,bgColor:'pink'},
 			// borderRadius最大值50
 		},
 		{

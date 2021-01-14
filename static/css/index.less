@@ -246,9 +246,13 @@ view{ box-sizing:border-box; font-family:Arial, Microsoft YaHei; font-size:28rpx
 			}
 		}
 		.poster-body{
-			flex: 1;
+			// flex: 1;
+			max-height: 800rpx;
+			min-height: 200rpx;
+			overflow-y: scroll;
 			&>image{
 				width: 100%;
+				height: 100%;
 			}
 		}
 		.poster-footer{
@@ -453,7 +457,7 @@ view{ box-sizing:border-box; font-family:Arial, Microsoft YaHei; font-size:28rpx
 					.color-item{
 						flex: 45%;
 						margin: 5px;
-						height: 80rpx;
+						height: 70rpx;
 						background: blue;
 						border-radius: 2px;
 					}
