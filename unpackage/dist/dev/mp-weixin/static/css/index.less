@@ -97,27 +97,42 @@ view{ box-sizing:border-box; font-family:Arial, Microsoft YaHei; font-size:28rpx
 				padding:0 5rpx;
 				.scroll-left{
 					flex: 1;
-					display: flex;
-					align-items: center;
+					
 					padding-left:8rpx ;
-					.zfx{
-						
-						width: 70rpx;
-						height: 70rpx;
-						border-radius: 24rpx;
-						background: #28cd96;
-						
+					scroll-view{
+						height: 90rpx;
 					}
-					.tip{
-						margin-left: 10rpx;
+					.scroll-left-item{
+						display: flex;
+						align-items: center;
+						.zfx{
+							width: 70rpx;
+							height: 70rpx;
+							border-radius: 24rpx;
+							background: #28cd96;
+							
+						}
+						.tip{
+							margin-left: 10rpx;
+						}
 					}
+					
 				}
-				.icon-arrow-right{
+				.scroll-right{
+					display: flex;
 					width: 100rpx;
 					text-align: right;
 					padding-right: 10rpx;
 					font-size: 42rpx;
+					.many{
+						display: inline-block;
+					}
+					.icon-arrow-right{
+						display: inline-block;
+					}
 				}
+				
+				
 			}
 			
 			.swiper{
@@ -280,7 +295,7 @@ view{ box-sizing:border-box; font-family:Arial, Microsoft YaHei; font-size:28rpx
 		background: #28cd96;
 		color: white;
 		&>.iconfont{
-			font-size: 60rpx;
+			font-size: 50rpx;
 		}
 	}
 	.delbg{
@@ -334,14 +349,43 @@ view{ box-sizing:border-box; font-family:Arial, Microsoft YaHei; font-size:28rpx
 			position: absolute;
 			top: 0;
 			bottom: 0;
-	
+			
+			.sl{border: dashed 3rpx #60c1ff;}
+			
 			movable-view {
 				position: absolute;
-				// border: solid 1px red;
+				
 				height: auto;
 				width: auto;
+				.operator-item{
+					position: absolute;
+					top: 0;
+					right: -50rpx;
+					padding: 2rpx;
+					background: #fff;
+					border-radius: 50%;
+					width: 38rpx;
+					height: 38rpx;
+					line-height: 38rpx;
+					text-align: center;
+					&>.iconfont{
+						color: #90908c;
+					}
+				}
+				
+				.del-ele{
+					
+					
+				}
+				.copy-ele{
+					top: 60rpx;
+				}
+				.edit-ele{
+					left:-50rpx;
+				}
+				
 			}
-	
+			
 			.text {
 				height: auto;
 				width: auto;
@@ -362,6 +406,8 @@ view{ box-sizing:border-box; font-family:Arial, Microsoft YaHei; font-size:28rpx
 }
 
 .ps-add-content-box{
+	position: relative;
+	top: 100rpx;
 	display: flex;
 	flex-direction: column;
 	.content-th{
@@ -395,17 +441,18 @@ view{ box-sizing:border-box; font-family:Arial, Microsoft YaHei; font-size:28rpx
 			align-items: center;
 			justify-content: center;
 			width: 100%;
-			height: 400rpx;
+			height: 200rpx;
 			border-radius: 5px;
 			margin: 5px;
 			margin-top: 10rpx;
-			background: #5fd4ad;
+			background: #4b64ff;
 			.iconfont{
-				font-size: 100rpx;
+				font-size: 80rpx;
 				color: #fff;
 			}
 			.text{
 				font-size: 40rpx;
+				margin-top: 20rpx;
 				color: #fff;
 			}
 		}
@@ -414,6 +461,8 @@ view{ box-sizing:border-box; font-family:Arial, Microsoft YaHei; font-size:28rpx
 
 
 .ps-edit-content-box{
+	position: relative;
+	top: 100rpx;
 	display: flex;
 	flex-direction: column;
 	.content-th{
@@ -449,15 +498,20 @@ view{ box-sizing:border-box; font-family:Arial, Microsoft YaHei; font-size:28rpx
 			.bottom{
 				flex: 1;
 				width: 100%;
+				
+				input{
+					border: solid 1px #e8e8e8;
+					padding: 5px;
+				}
 				.colors{
 					display: flex;
 					justify-content: space-between;
 					flex-wrap: wrap;
 					width: 100%;
 					.color-item{
-						flex: 45%;
-						margin: 5px;
-						height: 70rpx;
+						flex: 15%;
+						margin: 3px;
+						height: 60rpx;
 						background: blue;
 						border-radius: 2px;
 					}

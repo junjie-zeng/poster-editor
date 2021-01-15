@@ -1,6 +1,5 @@
 <template>
 	<view>
-		
 		<appHeader option ="personal" title = "宣传海报"></appHeader>
 		<view class="ps-body">
 			<view class="ps-inner-box ps-bg-linear">
@@ -20,12 +19,29 @@
 				<view class="ps-full-box">
 					<view class="ps-scroll">
 						<view class="scroll-left">
-							<view class="zfx"></view>
-							<view class="tip">青藏高原</view>
+							<swiper class="swiper" vertical autoplay  interval="1500" circular style="height: 90rpx;" >
+								<swiper-item>
+									<view class="scroll-left-item">
+										<view class="zfx"></view>
+										<view class="tip">青藏高原</view>
+									</view>
+								</swiper-item>
+								<swiper-item>
+									<view class="scroll-left-item">
+										<view class="zfx"></view>
+										<view class="tip">adfasd</view>
+									</view>
+								</swiper-item>
+							</swiper>
 						</view>
-						<navigator url="/pages/poster/more-poster/index">
-							<view class="iconfont icon-arrow-right"></view>
-						</navigator>
+						              
+						<view class="scroll-right">
+							<navigator url="/pages/poster/more-poster/index">
+								<view class="many">更多</view>
+								<view class="iconfont icon-arrow-right"></view>
+							</navigator>
+						</view>
+						
 					</view>
 				</view>
 			</view>
@@ -39,40 +55,19 @@
 							</view>
 							<view class="ps-td">
 								<view class="poster-recommend">
-									<view class="poster-item">
-										<navigator url="/pages/poster/edit-poster/index">
+									<view class="poster-item" v-for="(item,index) in pageList" :key = "item.id">
+										<navigator :url="'/pages/poster/edit-poster/index?id='+item.id">
 											<view class="ps-cover">
-												<image src="../../../static/image/1.jpg" ></image>
+												<image :src="item.url" ></image>
 												<view class="poster-tips">
 													<text class="iconfont icon-all"></text>
 													<text>使用</text>
 												</view>
 											</view>
-											<view class="des">青藏高原</view>
+											<view class="des">{{item.name}}</view>
 										</navigator>
 										
 									</view>
-									<view class="poster-item">
-										<view class="ps-cover">
-											<image src="../../../static/image/4.jpg" ></image>
-											<view class="poster-tips">
-												<text class="iconfont icon-all"></text>
-												<text>使用</text>
-											</view>
-										</view>
-										<view class="des">四川盆地</view>
-									</view>
-									<view class="poster-item">
-										<view class="ps-cover">
-											<image src="../../../static/image/3.jpg" ></image>
-											<view class="poster-tips">
-												<text class="iconfont icon-all"></text>
-												<text>使用</text>
-											</view>
-										</view>
-										<view class="des">刚果高原</view>
-									</view>
-									
 								</view>
 							</view>
 						</view>
@@ -84,11 +79,18 @@
 </template>
 
 <script>
+	import { mapState,mapActions} from 'vuex'
 	export default {
 		data() {
 			return {
 				
 			}
+		},
+		computed:{
+			...mapState(['pageList'])
+		},
+		mounted() {
+			console.log(this.pageList)
 		},
 		methods: {
 			

@@ -12,9 +12,19 @@
 		
 		<!-- drag -->
 		<drag></drag>
+		
+		
+		<!-- test -->
+	<!-- 	<view class="" style="margin-top: 50px;">
+			<poster ref = "poster" :pageInfo = "pageInfo" ></poster>
+			<image :src="testUrl" mode=""></image>
+		</view> -->
+		
+		
+		<!-- tset -->
 		<!-- uniPopup -->
 		<uniPopup ref = "ps-setting-modal">
-			<setting-modal></setting-modal>
+			<operation-setting-modal></operation-setting-modal>
 		</uniPopup>
 		<uniPopup ref = "ps-create-poster-modal">
 			<create-poster-modal></create-poster-modal>
@@ -26,6 +36,7 @@
 		<uni-drawer ref="edit-content-drawer" mode="right">
 			<edit-content-drawer></edit-content-drawer>
 		</uni-drawer>
+		
 	</view>
 </template>
 
@@ -36,7 +47,7 @@
 	import modal from '@/common/mixins/modal.js'
 	import drawer from '@/common/mixins/drawer.js'
 	import drag from './children/drag.vue'
-	import settingModal from './children/setting-modal.vue'
+	import operationSettingModal from './children/operation-setting-modal.vue'
 	import createPosterModal from './children/create-poster-modal.vue'
 	import addContentDrawer from './children/add-content-drawer.vue'
 	import editContentDrawer from './children/edit-content-drawer.vue'
@@ -45,24 +56,44 @@
 		mixins:[broadcast,wxAsync,modal,drawer],
 		data() {
 			return {
-				
+				testUrl:''
 			}
 		},
 		computed:{
 			...mapState(['pageInfo'])
 		},
+		onLoad(option) {
+			// console.log(option)
+			this.getPageInfo(option.id)
+		},
 		mounted(){
-			
+			console.log('mounted ...')
 			
 		},
 		methods: {
-			operation(){
+			...mapActions(['updateContent','getPageInfo']),
+			async operation(){
 				this.modal('ps-setting-modal','open')
+				
+				
+			},
+			async operation2(){
+				
+				try{
+					let { width,height } = await this.getClientRect('#image-box')
+					this.updateContent({key:'width',value:width})
+					this.updateContent({key:'height',value:height})
+					this.$refs.poster.createPoster((res)=>{
+						console.log(res.tempFilePath)
+						this.testUrl = res.tempFilePath
+						
+					})
+				}catch(e){console.log('create poster ...',e)}
 			}
 		},
 		components:{
 			drag,
-			settingModal,
+			operationSettingModal,
 			createPosterModal,
 			addContentDrawer,
 			editContentDrawer

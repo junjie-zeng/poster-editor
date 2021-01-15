@@ -35,5 +35,6 @@
     "uni-popup": "/components/uni-popup/uni-popup",
     "uni-drawer": "/components/uni-drawer/uni-drawer",
     "app-header": "/components/app-header/app-header"
-  }
+  },
+  "sitemapLocation": "sitemap58.json"
 }

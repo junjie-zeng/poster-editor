@@ -6,13 +6,13 @@
 		</view>
 		<view class="content-td">
 			<view class="td-item" @click="add('text')">
-				<view class="iconfont icon-Daytimemode"></view>
+				<view class="iconfont icon-wenzi1"></view>
 				<view class="text">
 					文字
 				</view>
 			</view>
 			<view class="td-item" @click="add('img')">
-				<view class="iconfont icon-add"></view>
+				<view class="iconfont icon-tupian"></view>
 				<view class="text">
 					图片
 				</view>

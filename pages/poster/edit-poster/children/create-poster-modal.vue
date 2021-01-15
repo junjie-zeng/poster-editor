@@ -4,7 +4,7 @@
 			<view class="poster-heder">
 				<text class="iconfont icon-close" @click="$modal('ps-create-poster-modal','close')"></text>
 			</view>
-			<view class="poster-body">
+			<view class="poster-body" v-if="posterUrl">
 				<image :src="posterUrl" mode="widthFix"></image>
 			</view>
 			<view class="poster-footer">

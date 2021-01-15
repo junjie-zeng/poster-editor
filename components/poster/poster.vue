@@ -20,21 +20,29 @@
 				const {detail,content:contents} = this.pageInfo
 				// 背景图片宽高
 				const {width,height}  = this.pageInfo.detail//await this.getClientRect('#bgImage')
+				console.log(width,height)
 				// 海报
 				let context = uni.createCanvasContext(this.canvasId)
 				// 设置canvas的宽和高
 				this.$set(this.poster,'width',width)
 				this.$set(this.poster,'height',height)
 				// 绘制背景
-				context.drawImage(detail.backgroundImage, 0, 0, width, height)
+				if(detail.backgroundImage){
+					context.drawImage(detail.backgroundImage, 0, 0, width, height)
+				}else{
+					context.setFillStyle(detail.background)
+					context.fillRect(0, 0, width, height)
+					
+				}
 				
 				contents.forEach((item)=>{
 					const {detail:d} = item
 					switch(item.type){
 						case 'text':
 							context.setFillStyle(d.color)
-							context.setFontSize(d.fontSize)
-							// 默认加上20不然高度不对
+							context.font = `${d.fontSize}px ${d.fontFamily}`
+							// context.setFontSize(d.fontSize)
+							// 默认加上20 高度有误差
 							context.fillText(d.content,d.x,d.y + 20)
 							break
 							
@@ -90,8 +98,12 @@
 							context.closePath()
 							// 剪切
 							context.clip()
-											 
-							context.drawImage(d.url,d.x,d.y,d.width / 2,d.height / 2)
+							if(d.url){
+								context.drawImage(d.url,d.x,d.y,d.width / 2,d.height / 2)
+							}else{
+								context.setFillStyle(d.bgColor)
+								context.fillRect(d.x, d.y, d.width / 2, d.height / 2)
+							}		 
 							// 恢复之前保存的绘图上下文
 							context.restore() 
 							break
@@ -100,29 +112,36 @@
 					}
 				})
 				
-				context.draw()
+				// context.draw()
 				
-				setTimeout(()=>{
+				// setTimeout(()=>{
+				// 	uni.canvasToTempFilePath({
+				// 		canvasId:'poster', //this.canvasId,
+				// 		success(res) {
+				// 			callback && callback(res)
+				// 		},
+				// 		fail(err) {
+				// 			console.log(err)
+				// 		}
+				// 	},this)
+					
+				// },500)
+				
+				
+				context.draw(false,()=>{
 					uni.canvasToTempFilePath({
 						canvasId:'poster', //this.canvasId,
 						success(res) {
+							console.log(res)
 							callback && callback(res)
 						},
 						fail(err) {
 							console.log(err)
 						}
 					},this)
-					
-				},500)
-				// context.draw(false,wx.canvasToTempFilePath({
-				// 	  canvasId: 'poster',
-				// 	  success: function (res) {
-				// 		callback && callback(res)
-				// 	  },
-				// 	  fail: function (err) {
-				// 		console.log(err);
-				// 	  }
-				// }this))
+				})
+				
+				
 				
 				
 			},

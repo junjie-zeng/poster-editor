@@ -8,7 +8,7 @@
 		<view class="drag">
 			<movable-area>
 				<movable-view
-					class="target" 
+					:class="['target',(currentIndex == index?'sl':'')]"
 					direction="all" 
 					animation= "false"
 					scale= "true"
@@ -16,13 +16,14 @@
 					:key = "index"
 					:x="item.detail.x" 
 					:y="item.detail.y" 
-					@click = "editItem(index)" 
+					@click="currentIndex = index"
 					@change = "updateRect($event,index,'change ...')"
 					@scale = "updateScale"
 					>
 					<!-- 	 -->
 					<!-- text -->
 					<view class="text" 
+						:contenteditable="isContenteditable"
 							v-if="item.type == 'text'"
 							:style="{fontSize:item.detail.fontSize+'px',
 									color:item.detail.color,
@@ -39,6 +40,23 @@
 					backgroundColor:item.detail.bgColor,
 					}">
 						<image  :src="item.detail.url" ></image>
+						<!-- <image  src="@/static/image/nike.jpg" ></image> -->
+						
+					</view>
+					<!-- operator -->
+					<view v-if="currentIndex == index">
+						<!-- edit -->
+						<view class="operator-item edit-ele" @click.stop = "editItem(index)" >
+							<view class=" iconfont icon-bianji"></view>
+						</view>
+						<!-- del -->
+						<view class="operator-item del-ele" @click.stop="del(index)">
+							<view class=" iconfont icon-shanchu"></view>
+						</view>
+						<!-- copy -->
+						<view class="operator-item copy-ele" @click.stop="copy(index)">
+							<view class=" iconfont icon-fuzhi-"></view>
+						</view>
 					</view>
 				</movable-view>
 			</movable-area>
@@ -58,7 +76,10 @@
 		data() {
 			return {
 				fontWeightIndex:0,
-				fontWeightArray:[1,2,3]
+				fontWeightArray:[1,2,3],
+				touchStartTime:0,
+				isContenteditable:false,
+				currentIndex:-1
 			}
 		},
 		computed:{
@@ -69,11 +90,20 @@
 			
 		},
 		methods: {
-			...mapActions(['changeCoordinate','setEditIndex']),
+			...mapActions(['changeCoordinate','setEditIndex','delContent','copyContent']),
 			editItem(index){
-				this.setEditIndex(index)
-				this.$drawer('edit-content-drawer','open')
-				
+				// if (this.touchStartTime == 0) {
+				// 	this.touchStartTime = new Date().getTime()
+				// } else {
+				// 	if (new Date().getTime() - this.touchStartTime <= 300) {
+						// start ...
+						this.setEditIndex(index)
+						this.$drawer('edit-content-drawer','open')
+						// end ...
+				// 	}
+				// 	this.touchStartTime = 0
+				// }
+				this.currentIndex = index
 				
 			},
 			updateRect(ev,index,type){
@@ -86,11 +116,18 @@
 					})
 					this.changeCoordinate({index,x,y})
 				}
+				this.currentIndex = index
 			},
 			updateScale(e){
 				const  {x,y, scale} = e.detail
 				console.log(e)
 				
+			},
+			del(index){
+				this.delContent(index)
+			},
+			copy(index){
+				this.copyContent(index)
 			}
 		}
 	}

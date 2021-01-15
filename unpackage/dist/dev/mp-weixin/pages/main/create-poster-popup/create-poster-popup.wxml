@@ -1,1 +1,0 @@
-<view class="create-poster-popup"><view class="show-poster"><image src="{{posterUrl}}"></image></view><view class="save-poster"><view class="save-tips">长按图片保存到本地</view><view class="save-btn"><button type="default">保存到本地</button><button type="default" data-event-opts="{{[['tap',[['cancel',['$event']]]]]}}" bindtap="__e">取消</button></view></view></view>
