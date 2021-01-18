@@ -10,7 +10,7 @@ view{ box-sizing:border-box; font-family:Arial, Microsoft YaHei; font-size:28rpx
 .ps-col-50{width:50%;padding: 10rpx;}
 .ps-btn-blue-line {border: solid 0.5px rgba(75,100,255,.5);color: #4b64ff !important;}
 .ps-btn-blue {background: #4b64ff; border: solid 0.5px #4b64ff;color: #ffffff !important;}
-
+body{background: #f5f6f6;}
 .ps-header{
 	display: flex;
 	justify-content: space-around;
@@ -109,8 +109,10 @@ view{ box-sizing:border-box; font-family:Arial, Microsoft YaHei; font-size:28rpx
 							width: 70rpx;
 							height: 70rpx;
 							border-radius: 24rpx;
-							background: #28cd96;
-							
+							background: #4b64ff;
+							text-align: center;
+							line-height: 70rpx;
+							color: white;
 						}
 						.tip{
 							margin-left: 10rpx;
@@ -275,6 +277,25 @@ view{ box-sizing:border-box; font-family:Arial, Microsoft YaHei; font-size:28rpx
 			height: 120rpx;
 			align-items: center;
 		}
+		.poster-info{
+			// padding: 5rpx;
+			color: #9da1a5;
+			.title{
+				text-align: center;
+				color: #9da1a5;
+				padding: 10rpx;
+			}
+			.pi-name{
+				padding: 0 20rpx;
+				input{
+					height: 66rpx;
+					border: solid 1px #e4e9ff;
+					padding: 0 28rpx;
+					border-radius:20rpx;
+					font-size: 24rpx;
+				}
+			}
+		}
 	}
 	
 }
@@ -366,15 +387,19 @@ view{ box-sizing:border-box; font-family:Arial, Microsoft YaHei; font-size:28rpx
 					border-radius: 50%;
 					width: 38rpx;
 					height: 38rpx;
-					line-height: 38rpx;
+					line-height: 35rpx;
 					text-align: center;
+					
 					&>.iconfont{
+						font-size: 24rpx;
 						color: #90908c;
 					}
 				}
 				
 				.del-ele{
-					
+					&>.iconfont{
+						color: red;
+					}
 					
 				}
 				.copy-ele{
@@ -561,6 +586,66 @@ view{ box-sizing:border-box; font-family:Arial, Microsoft YaHei; font-size:28rpx
 	}
 	
 }
+
+.works{
+	
+	.ps-works-box{
+		position: relative;
+		top: 90rpx;
+		
+		.not-works{
+			text-align: center;
+			padding-top: 200rpx;
+			.title{
+				.zhizuo{
+					display: inline-block;
+					color: #0f81ff;
+				}
+			}
+			.iconfont{
+				padding: 10rpx;
+				font-size: 100rpx;
+			}
+			
+		}
+		
+		.ps-works-list{
+			background: #fff;
+			.ps-w-list-item{
+				display:  flex;
+				height: 220rpx;
+				border-bottom: solid 2rpx rgba(75,100,255,.08);
+				padding: 20rpx 20rpx ;
+				.w-list-item-left{
+					display:  flex;
+					flex: 1;
+					.item-left-img{
+						width: 200rpx;
+						height: 180rpx;
+						border-radius: 15rpx;
+						overflow: hidden;
+						image{
+							width: 100%;
+							height: 100%;
+						}
+					}
+					.item-left-text{
+						padding-left: 20rpx;
+						padding-top: 10rpx;
+					}
+				}
+				.w-list-item-right{
+					width: 200rpx;
+					line-height: 200rpx;
+					text-align: right;
+					padding-right: 10rpx;
+				}
+				
+			}
+		}
+	}
+}
+
 
 .ps-more-poster-box{
 	position: relative;

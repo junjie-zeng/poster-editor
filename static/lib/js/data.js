@@ -4,7 +4,7 @@
 let pageInfo = [
 	{
 		id:0,
-		detail:{background:'pink',backgroundImage:'../../../static/image/1.jpg',width:375,height:240},
+		detail:{background:'pink',backgroundImage:'../../../static/image/1.jpg',width:375,height:250},
 		content:[
 			{
 				id:2,
@@ -26,7 +26,7 @@ let pageInfo = [
 	},
 	 {
 	 	id:1,
-	 	detail:{background:'pink',backgroundImage:'../../../static/image/4.jpg',width:375,height:240},
+	 	detail:{background:'pink',backgroundImage:'../../../static/image/2.jpg',width:375,height:240},
 	 	content:[
 	 		{
 	 			id:0,
