@@ -7,7 +7,7 @@
 
 <script>
 	export default {
-		props:['pageInfo'],
+		// props:['pageInfo'],
 		data() {
 			return {
 				poster:{},
@@ -15,11 +15,11 @@
 			};
 		},
 		methods:{
-			createPoster(callback){
+			createPoster(pageInfo,callback){
 				// 页面信息
-				const {detail,content:contents} = this.pageInfo
+				const {detail,content:contents} = pageInfo
 				// 背景图片宽高
-				const {width,height}  = this.pageInfo.detail//await this.getClientRect('#bgImage')
+				const {width,height}  = detail
 				console.log(width,height)
 				// 海报
 				let context = uni.createCanvasContext(this.canvasId)
@@ -132,7 +132,7 @@
 					uni.canvasToTempFilePath({
 						canvasId:'poster', //this.canvasId,
 						success(res) {
-							console.log(res)
+							// console.log(res)
 							callback && callback(res)
 						},
 						fail(err) {
