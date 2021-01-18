@@ -43,9 +43,14 @@
 				searchName:''
 			}
 		},
+		onLoad() {
+			// console.log('onLoad ...',this.pageList)
+			this.initLocalPageList()
+		},
 		computed:{
 			...mapState(['pageList']),
 			fliterList(){
+				// console.log("filter ...",this.pageList)
 				if(this.searchName){
 					if(this.currentType == 'all'){
 						return this.pageList.filter(item=>item.name.indexOf(this.searchName)>-1)
@@ -65,17 +70,27 @@
 			}
 		},
 		methods: {
+			...mapActions(['updatePageList']),
 			handleSwitchTab(index,item){
 				let currentType = item == '系统海报' ? 'system':item == '我的海报' ? 'my':'all'
 				this.currentType = currentType
 				this.currentIndex = index
-				console.log(this.currentType)
+				// console.log(this.currentType)
 				
 			},
 			gotoEdit(id){
 				uni.navigateTo({
-					url:`/pages/poster/edit-poster/index?id=${id}`
+					url:`/pages/poster/edit-poster/index?id=${id}&type=new`
 				})
+			},
+			initLocalPageList(){
+				let localPageList =  localStorage.getItem('localPageList')
+				if(localPageList){
+					// console.log(this.pageList)
+					// console.log(JSON.parse(localPageList))
+					
+					this.updatePageList(JSON.parse(localPageList))
+				}
 			}
 		}
 	}
