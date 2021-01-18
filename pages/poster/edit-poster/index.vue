@@ -27,7 +27,7 @@
 			<operation-setting-modal></operation-setting-modal>
 		</uniPopup>
 		<uniPopup ref = "ps-create-poster-modal">
-			<create-poster-modal></create-poster-modal>
+			<create-poster-modal :currentEditType="currentEditType"></create-poster-modal>
 		</uniPopup>
 		<!-- drawer -->
 		<uni-drawer ref="add-content-drawer" mode="left">
@@ -56,7 +56,8 @@
 		mixins:[broadcast,wxAsync,modal,drawer],
 		data() {
 			return {
-				testUrl:''
+				testUrl:'',
+				currentEditType:''
 			}
 		},
 		computed:{
@@ -64,10 +65,12 @@
 		},
 		onLoad(option) {
 			// console.log(option)
-			this.getPageInfo(option.id)
+			const {id,type} = option
+			this.getPageInfo(id)
+			this.currentEditType = type
 		},
 		mounted(){
-			console.log('mounted ...')
+			// console.log('mounted ...')
 			
 		},
 		methods: {
@@ -77,19 +80,20 @@
 				
 				
 			},
-			async operation2(){
+			// test
+			// async operation2(){
 				
-				try{
-					let { width,height } = await this.getClientRect('#image-box')
-					this.updateContent({key:'width',value:width})
-					this.updateContent({key:'height',value:height})
-					this.$refs.poster.createPoster((res)=>{
-						console.log(res.tempFilePath)
-						this.testUrl = res.tempFilePath
+			// 	try{
+			// 		let { width,height } = await this.getClientRect('#image-box')
+			// 		this.updateContent({key:'width',value:width})
+			// 		this.updateContent({key:'height',value:height})
+			// 		this.$refs.poster.createPoster((res)=>{
+			// 			console.log(res.tempFilePath)
+			// 			this.testUrl = res.tempFilePath
 						
-					})
-				}catch(e){console.log('create poster ...',e)}
-			}
+			// 		})
+			// 	}catch(e){console.log('create poster ...',e)}
+			// }
 		},
 		components:{
 			drag,
