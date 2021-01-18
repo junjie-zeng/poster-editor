@@ -9,6 +9,7 @@ export const ADD_CONTENT = 'ADD_CONTENT'
 export const DEL_CONTENT = 'DEL_CONTENT'
 // copy
 export const COPY_CONTENT = 'COPY_CONTENT'
+export const UPDATE_PAGElIST = 'UPDATE_PAGElIST'
 
 // update x y
 export const CHANGE_COORDINATE = 'CHANGE_COORDINATE'

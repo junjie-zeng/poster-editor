@@ -1,4 +1,4 @@
-import { UPDATE_PAGE_INFO,ADD_CONTENT,CHANGE_COORDINATE ,EDIT_INDEX,UPDATE_CONTENT_DETAIL,UPDATE_POSTER,UPDATE_CONTENT,DEL_CONTENT,COPY_CONTENT} from './mutation-types.js'
+import { UPDATE_PAGE_INFO,ADD_CONTENT,CHANGE_COORDINATE ,EDIT_INDEX,UPDATE_CONTENT_DETAIL,UPDATE_POSTER,UPDATE_CONTENT,DEL_CONTENT,COPY_CONTENT,UPDATE_PAGElIST} from './mutation-types.js'
 
 export default{
 	addContent({commit,state},content){
@@ -55,10 +55,20 @@ export default{
 		commit(UPDATE_POSTER,url)
 	},
 	getPageInfo({commit,state},id){
-		let pageList = state.pageList
+		let localPageList =  localStorage.getItem('localPageList')
+		let pageList = null
+		if(localPageList){
+			pageList = [...state.pageList,...JSON.parse(localPageList)]
+		}else{
+			pageList = state.pageList
+		}
 		let pageInfo = copy(pageList.filter(item=>item.id == id)[0])
-		console.log(pageInfo)
+		// console.log(pageInfo)
 		commit(UPDATE_PAGE_INFO,{pageInfo})
+	},
+	updatePageList({commit,state},localPageList){
+		let pageList = state.pageList.concat(localPageList)
+		commit(UPDATE_PAGElIST,pageList)
 	}
 }
 
