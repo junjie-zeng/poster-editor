@@ -6,7 +6,7 @@
 			<!-- <image  src="@/static/image/6.png" mode="widthFix"></image> -->
 		</view>
 		<view class="drag">
-			<movable-area>
+			<movable-area @click="currentIndex=-1">
 				<movable-view
 					:class="['target',(currentIndex == index?'sl':'')]"
 					direction="all" 
@@ -16,9 +16,9 @@
 					:key = "index"
 					:x="item.detail.x" 
 					:y="item.detail.y" 
-					@click="currentIndex = index"
-					@change = "updateRect($event,index,'change ...')"
-					@scale = "updateScale"
+					@click.stop="currentIndex = index"
+					@change.stop = "updateRect($event,index,'change ...')"
+					@scale.stop = "updateScale"
 					>
 					<!-- 	 -->
 					<!-- text -->
