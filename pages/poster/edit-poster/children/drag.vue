@@ -39,7 +39,7 @@
 					overflow: 'hidden',
 					backgroundColor:item.detail.bgColor,
 					}">
-						<image  :src="item.detail.url" ></image>
+						<image  :src="item.detail.url" :name = "item.detail.url" ></image>
 						<!-- <image  src="@/static/image/nike.jpg" ></image> -->
 						
 					</view>

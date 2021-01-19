@@ -91,7 +91,8 @@
 	import broadcast from '@/common/mixins/broadcast.js'
 	import wxAsync from '@/common/mixins/wxAsync.js'
 	import drawer from '@/common/mixins/drawer.js'
-	import {mapState, mapActions } from 'vuex'
+	import { mapState, mapActions } from 'vuex'
+	import { blobToBase64 } from '@/common/tools/index.js'
 	export default {
 		mixins:[broadcast,wxAsync,drawer],
 		data() {
@@ -135,8 +136,10 @@
 					sizeType: ['original', 'compressed'], 
 					sourceType: ['album'], //从相册选择
 					success: (res)=> {
-						let url = res.tempFilePaths[0]
-						this.updateContentDetail({key:'url',value:url})
+						blobToBase64(res.tempFiles[0],(url)=>{
+							this.currentItem.detail.url = url
+							this.updateContentDetail({key:'url',value:url})
+						})
 					}
 				})
 			},

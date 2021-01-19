@@ -43,6 +43,7 @@
 	import modal from '@/common/mixins/modal.js'
 	import drawer from '@/common/mixins/drawer.js'
 	import poster from '@/components/poster/poster.vue'
+	import { blobToBase64 } from '@/common/tools/index.js'
 	import {mapState, mapActions } from 'vuex'
 	export default {
 		mixins:[broadcast,wxAsync,modal,drawer],
@@ -61,8 +62,9 @@
 					sizeType: ['original', 'compressed'], 
 					sourceType: ['album'], //从相册选择
 					success: (res)=> {
-						let url = res.tempFilePaths[0]
-						this.updateContent({key:'backgroundImage',value:url})
+						blobToBase64(res.tempFiles[0],(url)=>{
+							this.updateContent({key:'backgroundImage',value:url})
+						})
 					}
 				})
 				this._closeSettingModal()
