@@ -4,6 +4,22 @@
 let pageInfo = [
 	{
 		id:0,
+		detail:{background:'#fff',backgroundImage:'',width:375,height:667},
+		content:[
+			{
+				id:0,
+				type:'text',
+				detail:{x:100,y:95,fontSize:30,content:'Hello Word',color:'black',fontFamily:'微软雅黑'}
+			},
+			
+			// 后期类型：列表、图标
+		],
+		url:'../../../static/image/bank.jpg',
+		name:'空白开始',
+		type:'system'
+	},
+	{
+		id:1,
 		detail:{background:'pink',backgroundImage:'../../../static/image/1.jpg',width:375,height:250},
 		content:[
 			{
@@ -21,11 +37,11 @@ let pageInfo = [
 			// 后期类型：列表、图标
 		],
 		url:'../../../static/image/1.jpg',
-		name:'test1',
+		name:'测试',
 		type:'system'
 	},
 	 {
-	 	id:1,
+	 	id:2,
 	 	detail:{background:'pink',backgroundImage:'../../../static/image/2.jpg',width:375,height:240},
 	 	content:[
 	 		{
@@ -41,7 +57,7 @@ let pageInfo = [
 		type:'system'
 	 } ,
 	  {
-	  	id:2,
+	  	id:3,
 	  	detail:{background:'pink',backgroundImage:'../../../static/image/3.jpg',width:375,height:240},
 	  	content:[
 	  		{

@@ -27,7 +27,7 @@
 		</view>
 		<view class="setting-right">
 			<view class="right-item">
-				<view class="yuan" @click="createPoster">
+				<view class="yuan" @click="handleCreatePoster">
 					<text class="iconfont icon-ok"></text>
 				</view>
 				<text class="desc" >生成海报</text>
@@ -64,6 +64,17 @@
 					success: (res)=> {
 						blobToBase64(res.tempFiles[0],(url)=>{
 							this.updateContent({key:'backgroundImage',value:url})
+							this.updateContent({key:'width',value:'auto'})
+							this.updateContent({key:'height',value:'auto'})
+							// uni.getImageInfo({
+							// 	src:url,
+							// 	success:(value)=> {
+							// 		console.log(value)
+							// 		const {width,height} = value
+							// 		this.updateContent({key:'width',value:width})
+							// 		this.updateContent({key:'height',value:height})
+							// 	}
+							// })
 						})
 					}
 				})
@@ -74,15 +85,17 @@
 				this._closeSettingModal()
 				
 			},
-			async createPoster(){
+			async handleCreatePoster(){
 				// console.log(this.$refs.poster)
 				uni.showLoading({
 				    title: '正在生成'
 				});
 				try{
 					let { width,height } = await this.getClientRect('#image-box')
+					console.log(width,height)
 					this.updateContent({key:'width',value:width})
 					this.updateContent({key:'height',value:height})
+					
 					this.$refs.poster.createPoster(this.pageInfo,(res)=>{
 						uni.hideLoading();
 						this.setPosterUrl(res.tempFilePath)

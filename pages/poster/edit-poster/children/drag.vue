@@ -1,6 +1,9 @@
 <template>
 	<view class="drag-poster">
-		<view id = "image-box" class="poster" :style="{minWidth:pageInfo.detail.width,minHeight:pageInfo.detail.height,backgroundColor:pageInfo.detail.background}">
+		<view id = "image-box" class="poster" :style="{
+				width:pageInfo.detail.width == 'auto'? 'auto' : pageInfo.detail.width + 'px',
+				height:pageInfo.detail.height == 'auto' ? 'auto' : pageInfo.detail.height + 'px',
+				backgroundColor:pageInfo.detail.background}">
 			<!-- <image  src="@/static/image/2.png"  mode="widthFix"></image> -->
 			<image   :src="pageInfo.detail.backgroundImage"  mode="widthFix"></image>
 			<!-- <image  src="@/static/image/6.png" mode="widthFix"></image> -->
@@ -86,7 +89,7 @@
 			...mapState(['pageInfo'])
 		},
 		mounted(){
-			
+			console.log(this.pageInfo)
 			
 		},
 		methods: {

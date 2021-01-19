@@ -83,17 +83,21 @@
 				if(this.currentEditType == 'new'){ // new
 					pageInfo.id = Date.now()
 					pageInfo.type = 'my'
-					pageInfo.url = this.posterUrl
+					
 				}else{ // edit
 					list.forEach((item,index)=>{
 						let id = item.id
 						if(id == pageInfo.id){
+							pageInfo.id = item.id
+							pageInfo.type = item.type
 							list.splice(index,1) //del
 						}
 					})
 				}
+				pageInfo.url = this.posterUrl
 				pageInfo.name = this.posterName
 				list.push(pageInfo)
+				console.log(pageInfo)
 				try{
 					localStorage.setItem('localPageList',JSON.stringify(list))
 					uni.showToast({

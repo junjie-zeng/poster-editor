@@ -29,7 +29,11 @@
 				// 绘制背景
 				if(detail.backgroundImage){
 					context.drawImage(detail.backgroundImage, 0, 0, width, height)
-				}else{
+				}
+				
+				if(!detail.backgroundImage){
+					// 占位
+					context.drawImage('../../../static/image/default.png', 0, 0, 0, 0)
 					context.setFillStyle(detail.background)
 					context.fillRect(0, 0, width, height)
 					
@@ -112,22 +116,6 @@
 					}
 				})
 				
-				// context.draw()
-				
-				// setTimeout(()=>{
-				// 	uni.canvasToTempFilePath({
-				// 		canvasId:'poster', //this.canvasId,
-				// 		success(res) {
-				// 			callback && callback(res)
-				// 		},
-				// 		fail(err) {
-				// 			console.log(err)
-				// 		}
-				// 	},this)
-					
-				// },500)
-				
-				
 				context.draw(false,()=>{
 					uni.canvasToTempFilePath({
 						canvasId:'poster', //this.canvasId,
@@ -140,7 +128,6 @@
 						}
 					},this)
 				})
-				
 				
 				
 				
