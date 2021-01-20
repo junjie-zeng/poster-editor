@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "uni-drawer": "/components/uni-drawer/uni-drawer",
+    "drag": "/pages/poster/edit-poster/children/drag",
+    "operation-setting-modal": "/pages/poster/edit-poster/children/operation-setting-modal",
+    "create-poster-modal": "/pages/poster/edit-poster/children/create-poster-modal",
+    "add-content-drawer": "/pages/poster/edit-poster/children/add-content-drawer",
+    "edit-content-drawer": "/pages/poster/edit-poster/children/edit-content-drawer"
+  }
+}

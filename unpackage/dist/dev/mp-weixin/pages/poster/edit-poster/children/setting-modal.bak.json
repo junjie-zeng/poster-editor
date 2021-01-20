@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "poster": "/components/poster/poster"
+  },
+  "component": true
+}
