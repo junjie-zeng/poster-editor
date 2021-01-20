@@ -21,7 +21,7 @@
 					:y="item.detail.y" 
 					@click.stop="currentIndex = index"
 					@change.stop = "updateRect($event,index,'change ...')"
-					@scale.stop = "updateScale"
+					@scale.stop = "updateScale($event,index,'scale ...')"
 					>
 					<!-- 	 -->
 					<!-- text -->
@@ -89,11 +89,11 @@
 			...mapState(['pageInfo'])
 		},
 		mounted(){
-			console.log(this.pageInfo)
+			// console.log(this.pageInfo)
 			
 		},
 		methods: {
-			...mapActions(['changeCoordinate','setEditIndex','delContent','copyContent']),
+			...mapActions(['changeCoordinate','setEditIndex','delContent','copyContent','scaleElement']),
 			editItem(index){
 				// if (this.touchStartTime == 0) {
 				// 	this.touchStartTime = new Date().getTime()
@@ -124,7 +124,7 @@
 			updateScale(e){
 				const  {x,y, scale} = e.detail
 				console.log(e)
-				
+				// this.scaleElement()
 			},
 			del(index){
 				this.delContent(index)
