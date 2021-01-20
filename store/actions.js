@@ -37,6 +37,12 @@ export default{
 		pageInfo.content[index].detail.y = y
 		commit(UPDATE_PAGE_INFO,{pageInfo})
 	},
+	scaleElement({commit,state},{index,width,height}){
+		let pageInfo = JSON.parse(JSON.stringify(state.pageInfo))
+		pageInfo.content[index].detail.width = width
+		pageInfo.content[index].detail.height = height
+		commit(UPDATE_PAGE_INFO,{pageInfo})
+	},
 	setEditIndex({commit,state},index){
 		commit(EDIT_INDEX,index)
 	},
