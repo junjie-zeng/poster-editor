@@ -37,14 +37,14 @@
 						content = {
 							id:0,
 							type:'text',
-							detail:{x:0,y:0,fontSize:20,content:'Nike',color:'black',fontFamily:'微软雅黑'}
+							detail:{x:20,y:20,fontSize:20,content:'Nike',color:'rgba(0,0,0,1)',fontFamily:'微软雅黑'}
 						}
 					break
 					case 'img':
 						content = {
 							id:2,
 							type:'img',
-							detail:{x:0,y:0,width:100,height:100,url:'../../../static/image/nike.jpg',borderRadius:10,bgColor:'pink'},
+							detail:{x:20,y:20,width:100,height:100,url:'../../../static/image/nike.jpg',borderRadius:10,bgColor:'rgba(255,192,203,1)'},
 							// borderRadius最大值50
 						}
 					break
