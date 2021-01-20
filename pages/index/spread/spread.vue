@@ -14,7 +14,7 @@
 					<view class="ps-scroll">
 						<view class="scroll-left">
 							<swiper class="swiper" vertical autoplay  interval="2000" circular style="height: 90rpx;" >
-								<swiper-item v-for="(item,index) in pageList" :key = "index">
+								<swiper-item v-for="(item,index) in filterPageList" :key = "index">
 									<view class="scroll-left-item">
 										<view class="zfx iconfont icon-integral-fill">
 											<!-- <view class="iconfont icon-3jichuyuansu"></view> -->
@@ -43,7 +43,7 @@
 							</view>
 							<view class="ps-td">
 								<view class="poster-recommend">
-									<view class="poster-item" v-for="(item,index) in pageList" :key = "item.id">
+									<view class="poster-item" v-for="(item,index) in filterPageList" :key = "item.id">
 										<navigator :url="`/pages/poster/edit-poster/index?id=${item.id}&type=new`">
 											<view class="ps-cover">
 												<image :src="item.url" ></image>
@@ -80,7 +80,10 @@
 			}
 		},
 		computed:{
-			...mapState(['pageList'])
+			...mapState(['pageList']),
+			filterPageList(){
+				return this.pageList.filter(item=>item.type=='system')
+			}
 		},
 		mounted() {
 			// console.log(this.pageList)
