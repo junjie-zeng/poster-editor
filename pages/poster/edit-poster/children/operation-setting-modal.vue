@@ -2,16 +2,10 @@
 	<view class="ps-setting-box ">
 		<view class="setting-left">
 			<view class="left-item">
-				<view class="yuan" @click="handleUpdateBg">
-					<text class="iconfont icon-shangchuantupian"></text>
+				<view class="yuan" @click="backgroundSetting">
+					<text class="iconfont icon-background"></text>
 				</view>
-				<text class="desc">更换背景</text>
-			</view>
-			<view class="left-item">
-				<view class="yuan" @click="handleClearBg">
-					<text class="iconfont icon-clean"></text>
-				</view>
-				<text class="desc">清除背景</text>
+				<text class="desc">背景设置</text>
 			</view>
 			<view class="left-item">
 				<view class="yuan" @click="open">
@@ -56,34 +50,9 @@
 				this.$drawer('add-content-drawer','open')
 				this._closeSettingModal()
 			},
-			handleUpdateBg(){
-				uni.chooseImage({
-					count:1,
-					sizeType: ['original', 'compressed'], 
-					sourceType: ['album'], //从相册选择
-					success: (res)=> {
-						blobToBase64(res.tempFiles[0],(url)=>{
-							this.updateContent({key:'backgroundImage',value:url})
-							this.updateContent({key:'width',value:'auto'})
-							this.updateContent({key:'height',value:'auto'})
-							// uni.getImageInfo({
-							// 	src:url,
-							// 	success:(value)=> {
-							// 		console.log(value)
-							// 		const {width,height} = value
-							// 		this.updateContent({key:'width',value:width})
-							// 		this.updateContent({key:'height',value:height})
-							// 	}
-							// })
-						})
-					}
-				})
+			backgroundSetting(){
+				this.$drawer('bg-set-drawer','open')
 				this._closeSettingModal()
-			},
-			handleClearBg(){
-				this.updateContent({key:'backgroundImage',value:''})
-				this._closeSettingModal()
-				
 			},
 			async handleCreatePoster(){
 				// console.log(this.$refs.poster)

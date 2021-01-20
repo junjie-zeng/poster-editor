@@ -12,7 +12,10 @@
 					</view>
 					<view class="bottom">
 						<view class="colors">
-							<view class="color-item" :style="{'background':c}" v-for="(c,index) in colorList" :key = "index" @click="modifyCurrentItem('color',c)" ></view>
+							<view class="color-item" :style="{
+								'background':(`rgba(${color.rgba.r},${color.rgba.g},${color.rgba.b},${color.rgba.a})`)
+								}" @click="openColorPicker"></view>
+							<!-- <view class="color-item" :style="{'background':c}" v-for="(c,index) in colorList" :key = "index" @click="modifyCurrentItem('color',c)" ></view> -->
 						</view>
 					</view>
 				</view>
@@ -54,7 +57,10 @@
 					</view>
 					<view class="bottom">
 						<view class="colors">
-							<view v-for="(c,index) in colorList" :key = "index" @click="modifyCurrentItem('bgColor',c)" class="color-item" :style="{'background':c}"></view>
+							<view class="color-item" :style="{
+								'background':(`rgba(${color.rgba.r},${color.rgba.g},${color.rgba.b},${color.rgba.a})`)
+								}" @click="openColorPicker"></view>
+							<!-- <view v-for="(c,index) in colorList" :key = "index" @click="modifyCurrentItem('bgColor',c)" class="color-item" :style="{'background':c}"></view> -->
 						</view>
 					</view>
 				</view>
@@ -72,18 +78,19 @@
 					</view>
 					<view class="bottom">
 						<view class="set-image">
-							<image :src="currentItem.detail.url" mode="widthFix"></image>
+							<image v-if="currentItem.detail.url" :src="currentItem.detail.url" mode="widthFix"></image>
+							<view v-else class="not-img iconfont icon-tupian"></view>
 							<view class="set-image-btn">
 								<view class="iconfont icon-shangchuantupian" @click="chooseImage"></view>
-								<view class="iconfont icon-close" @click="modifyCurrentItem('url','')"></view>
+								<view class="iconfont icon-close" @click="delImage"></view>
 							</view>
 						</view>
 					</view>
 				</view>
-				
 			</view>
-			
 		</view>
+		<!-- color picker -->
+		<t-color-picker ref="colorPicker" :color="color.rgba" @confirm="confirmColor"></t-color-picker>
 	</view>
 </template>
 
@@ -91,10 +98,12 @@
 	import broadcast from '@/common/mixins/broadcast.js'
 	import wxAsync from '@/common/mixins/wxAsync.js'
 	import drawer from '@/common/mixins/drawer.js'
+	import colorPicker from '@/common/mixins/color-picker.js'
 	import { mapState, mapActions } from 'vuex'
-	import { blobToBase64 } from '@/common/tools/index.js'
+	import { blobToBase64,getRgbaColor,splitRgbaColor } from '@/common/tools/index.js'
+	import tColorPicker from '@/components/t-color-picker/t-color-picker.vue'
 	export default {
-		mixins:[broadcast,wxAsync,drawer],
+		mixins:[broadcast,wxAsync,drawer,colorPicker],
 		data() {
 			return {
 				font:{
@@ -103,7 +112,10 @@
 				},
 				currentItem:null,
 				colorList:['#000000','#ffffff','#ff1d20','#ffaa00','#ffff00','#55ff00','#0565ff','#55ffff','#8800ff'],
-			
+				color:{
+					rgba:{r: 48,g: 8,b: 8,a: 0.6},
+					key:''
+				}
 			}
 		},
 		computed:{
@@ -121,6 +133,16 @@
 			},
 			modifyCurrentItem(key,value){
 				this.updateContentDetail({key,value})
+			},
+			openColorPicker() {
+				// 打开颜色选择器
+				this.$showColorPicker('colorPicker','open')
+			},
+			confirmColor(e) {
+				let rgbaColor = getRgbaColor(e.rgba)
+				const { key } = this.color
+				this.color.rgba = e.rgba
+				this.modifyCurrentItem(key,rgbaColor)
 			},
 			sliderChange(e,key){
 				const {value} = e.detail
@@ -143,21 +165,30 @@
 					}
 				})
 			},
+			delImage(){
+				this.modifyCurrentItem('url','')
+				this.currentItem.detail.url = ''
+			},
 			_initCurrentItem(){
 				// init now
 				this.currentItem = this.pageInfo.content[this.editIndex]
-				console.log(this.currentItem)
 				const { type } = this.currentItem
 				// init fontFamily
 				if(type == 'text'){
-					const { fontFamily } = this.currentItem.detail
+					const { fontFamily, color} = this.currentItem.detail
 					this.font.fontWeightIndex = this.font.fontWeightArray.findIndex((item,index)=>item == fontFamily)
+					this.color.rgba = splitRgbaColor(color)
+					this.color.key = 'color'
 				}else if(type == 'img'){ // init image
-					const { url } = this.currentItem.detail
+					const { url , bgColor} = this.currentItem.detail
+					this.color.rgba = splitRgbaColor(bgColor)
+					this.color.key = 'bgColor'
 				}
 			}
 		},
-		
+		components:{
+			tColorPicker
+		}
 	}
 </script>
 

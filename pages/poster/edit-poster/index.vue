@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<appHeader option ="back" title = "海报海报"></appHeader>
+		<appHeader option ="back" :title = "pageInfo.name"></appHeader>
 		
 		<view class="ps-opertion-btn">
 			<!-- @click="modal('ps-setting-modal','open')" @click="addContent" -->
@@ -36,7 +36,10 @@
 		<uni-drawer ref="edit-content-drawer" mode="right">
 			<edit-content-drawer></edit-content-drawer>
 		</uni-drawer>
-		
+		<uni-drawer ref="bg-set-drawer" mode="left">
+			<background-set-drawer></background-set-drawer>
+		</uni-drawer>
+		<!-- <t-color-picker ref="colorPicker" :color="color" @confirm="confirm"></t-color-picker> -->
 	</view>
 </template>
 
@@ -46,18 +49,23 @@
 	import wxAsync from '@/common/mixins/wxAsync.js'
 	import modal from '@/common/mixins/modal.js'
 	import drawer from '@/common/mixins/drawer.js'
+	import colorPicker from '@/common/mixins/color-picker.js'
 	import drag from './children/drag.vue'
 	import operationSettingModal from './children/operation-setting-modal.vue'
 	import createPosterModal from './children/create-poster-modal.vue'
 	import addContentDrawer from './children/add-content-drawer.vue'
 	import editContentDrawer from './children/edit-content-drawer.vue'
+	import backgroundSetDrawer from './children/background-set-drawer.vue'
+	import tColorPicker from '@/components/t-color-picker/t-color-picker.vue'
+	
 	export default {
 		// props:['pageInfo'],
-		mixins:[broadcast,wxAsync,modal,drawer],
+		mixins:[broadcast,wxAsync,modal,drawer,colorPicker],
 		data() {
 			return {
 				testUrl:'',
-				currentEditType:''
+				currentEditType:'',
+				color: {r: 255,g: 0,b: 0,a: 0.6}
 			}
 		},
 		computed:{
@@ -80,6 +88,10 @@
 				
 				
 			},
+			confirm(e) {
+				console.log('颜色选择器返回值：'+ e.hex)
+				this.modifyCurrentItem('color',e.hex)
+			},
 			// test
 			// async operation2(){
 				
@@ -100,7 +112,9 @@
 			operationSettingModal,
 			createPosterModal,
 			addContentDrawer,
-			editContentDrawer
+			editContentDrawer,
+			backgroundSetDrawer,
+			tColorPicker
 		}
 	}
 </script>
