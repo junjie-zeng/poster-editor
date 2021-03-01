@@ -2,7 +2,7 @@
 	<view class="ps-header">
 		<view class="header-left">
 			<view class="iconfont icon-arrow-left" v-if="option == 'back'" @click="onClickLeft"></view>
-			<view class="touxiang"  v-if="option == 'personal'"> 
+			<view class="touxiang"  v-if="option == 'personal'" @click="goGitHub"> 
 				<!-- <open-data type="userAvatarUrl" style="border-radius: 50%;"></open-data> -->
 				<!-- <image src="../../../static/image/4.png" mode="widthFix"></image> -->
 				<svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1" width="32" aria-hidden="true">
@@ -39,7 +39,9 @@
 				// this.$emit("clickLeft");
 				uni.navigateBack();
 			},
-			
+			goGitHub(){
+				window.location.href = `https://github.com/junjie-zeng`
+			}
 		}
 	}
 </script>
